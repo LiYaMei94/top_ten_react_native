@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-11-04 11:53:57
- * @LastEditTime: 2019-11-11 15:16:12
+ * @LastEditTime: 2019-11-11 17:32:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\router.js
@@ -39,7 +39,6 @@ import UserAgreement from './pages/SystemPage/UserAgreement';
 //路由组件
 import Tab from './components/tabbar';
 
-const msg=1;
 //底部tabbar的图标
 const getTabBarIcon = (navigation, focused, tintColor) => {
     let msg=navigation.getScreenProps().msg;
