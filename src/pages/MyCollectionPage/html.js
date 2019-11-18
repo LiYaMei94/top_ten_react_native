@@ -1,10 +1,10 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:48:35
- * @LastEditTime: 2019-11-06 15:59:28
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\HomePage\html.js
+ * @Descripttion: 我的收藏
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-04 14:40:27
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-15 16:18:42
  */
 
 
@@ -12,20 +12,11 @@ import React, { Component } from 'react';
 import { Text, FlatList, Image, View,TouchableHighlight} from 'react-native';
 import {styles} from './style';
 import {listStyles} from '../../assets/css/listStyle';
-const data=[
-    {
-        title:'故宫博物院',
-        img:require('../../assets/images/list1.jpeg'),
-        label:'景点',
-        content:'故宫又称紫禁城，是明、清两代的皇宫，也是古老中国的标志和象征。虽说这里早已不再是中国的政治中心，能真切地感受到它曾经的荣耀。悠久的历史给这里留下了大规模的珍贵建筑和无数文物，也成为今天游玩故宫的主要看点。'
-    },
-    {
-        title:'故宫博物院',
-        img:require('../../assets/images/list1.jpeg'),
-        label:'景点',
-        content:'故宫又称紫禁城，是明、清两代的皇宫，也是古老中国的标志和象征。虽说这里早已不再是中国的政治中心，能真切地感受到它曾经的荣耀。悠久的历史给这里留下了大规模的珍贵建筑和无数文物，也成为今天游玩故宫的主要看点。'
-    }
-]
+import HeaderComponent from '../../components/HeaderComponent';
+import ArticleListComponent from '../../components/articleListComponent';
+import {headerHeight} from '../../assets/css/common';
+import ArticleList from '../../components/articleList';
+import {data} from '../HomePage/data';
 export default class MyCollectionPage extends React.Component {
     constructor(props) {
         super(props);
@@ -41,12 +32,18 @@ export default class MyCollectionPage extends React.Component {
     }
     render() {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container,{paddingTop:headerHeight}]}>
+                <HeaderComponent
+                    barStyle='light-content'
+                    titie='我的收藏' 
+                    navigation={this.props.navigation}
+                    isHeaderRight={false}
+                    ></HeaderComponent>
                 <FlatList
                     data={data}
                     keyExtractor={(item,index)=>index+''}
                     showsVerticalScrollIndicator={false}
-                    renderItem={(item,index)=><CollectionItem item={item.item} index={index} navigation={this.props.navigation} key={index}></CollectionItem>}
+                    renderItem={(item,index)=><ArticleListComponent pageType='MyCollectionPage' item={item.item} index={index} navigation={this.props.navigation} key={index}></ArticleListComponent>}
                 >
 
                 </FlatList>

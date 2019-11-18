@@ -1,11 +1,12 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:48:35
- * @LastEditTime: 2019-11-18 18:52:55
+ * @Descripttion: 新增是跳4个页面的时候
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-18 18:41:49
  * @LastEditors: liyamei
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\HomePage\html.js
+ * @LastEditTime: 2019-11-18 18:42:20
  */
+
 import React from 'react';
 import {
     Button,
@@ -101,24 +102,37 @@ export default class AddArticlePage extends React.Component {
                 <ScrollView style={{ width: '100%',paddingLeft:headerRightMarginRight,
         paddingRight:headerRightMarginRight, }}
                     showsVerticalScrollIndicator={false}>
-                    <View style={{
-                        width:'100%',
-                        paddingLeft: headerRightMarginRight,
-                        paddingRight: headerRightMarginRight,
-                    }}>
-                        <View style={styles.line}>
-                            <Text style={styles.lineLable}>标题：</Text>
-                            <TextInput placeholder='请输入标题' onChangeText={(text)=>this.setState({title:text})} multiline={true} selectionColor={themeColor} style={styles.lineInput}></TextInput>
-                        </View>
-                        <View style={[styles.line, { alignItems: "flex-start"}]}>
-                            <Text style={styles.lineLable}>描述：</Text>
-                            <TextInput placeholder='请输入描述' onChangeText={(text)=>this.setState({desc:text})} multiline={true} selectionColor={themeColor} style={styles.lineInput}></TextInput>
-                        </View>
-                        <View style={styles.line}>
-                            <View style={styles.optionLineTop}>
-                                <Text style={styles.lineLable}>第一：</Text>
-                                <TextInput multiline={true} selectionColor={themeColor} style={styles.lineInput}  placeholder='请输入选项一'></TextInput>
-                            </View>
+                    <View style={styles.contentLine}>
+                        <Text style={styles.lineLabel}>标签：</Text>
+                        <Text style={styles.labelContent}>{addData.selectedArr?addData.selectedArr.join('、'):''}</Text>
+                    </View>
+                    <View style={styles.contentLine}>
+                        <Text style={styles.lineLabel}>标题：</Text>
+                        <Text style={styles.labelContent}>{addData.title}</Text>
+                    </View>
+                    <View style={styles.contentLine}>
+                        <Text style={styles.lineLabel}>描述：</Text>
+                        <Text style={styles.labelContent}>{addData.desc}</Text>
+                    </View>
+                    <View style={styles.contentLine}>
+                        <Text style={styles.lineLabel}>内容：</Text>
+                        <View style={styles.labelContent}>
+                            {
+                                addData.listDataArr?
+                                addData.listDataArr.map((item,index)=>{
+                                    return(
+                                        <View style={styles.listItem} key={index}>
+                                            <Text style={styles.listContent}>{index+1}、{item.content}</Text>
+                                            {
+                                                item.images.map((img_item,img_index)=>{
+                                                    return <Image resizeMode='contain' style={styles.listContentImg}  source={{uri:img_item.uri}} key={img_index}></Image>
+                                                })
+                                            }
+                                            
+                                        </View>
+                                    )
+                                }):null
+                            }
                         </View>
                     </View>
                 </ScrollView>

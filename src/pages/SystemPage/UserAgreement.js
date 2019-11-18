@@ -1,10 +1,12 @@
 /*
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-10-14 18:04:33
- * @LastEditTime: 2019-11-04 14:34:07
- * @LastEditors: Please set LastEditors
+ * @Descripttion: 用户协议
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-04 14:27:43
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-15 13:44:02
  */
+
 import React, { Component } from 'react';
 import {
     AppRegistry,
@@ -16,11 +18,20 @@ import {
     View
 } from 'react-native';
 import {greyBG} from '../../assets/css/common';
+import { WebView } from "react-native-webview";
+import {serviceAgreementHtml} from './serviceAgreementHtml';
+import {privacyAgreementHtml} from './privacyAgreementHtml';
+import {headerStyle} from '../../assets/css/common';
 export default class UserAgreement extends Component {
+    static navigationOptions = ({ navigation }) => ({
+        title:navigation.getParam('pageType', '服务协议'),
+        headerStyle: headerStyle,
+        //headerRight:<HeaderComponent navigation={navigation}></HeaderComponent>
+    })
     constructor(props){
         super(props);
         this.state={
-            
+            pageType:props.navigation.getParam('pageType', '服务协议'),
         }
     }
     componentDidMount() {
@@ -29,8 +40,19 @@ export default class UserAgreement extends Component {
     componentWillUnmount() {
        
     }
-    
-    render() {
+    render(){
+        const {pageType}=this.state;
+        return(
+            <View style={styles.container}>
+                <WebView
+                        source={{html:pageType=='服务协议'?serviceAgreementHtml:privacyAgreementHtml}}
+                        style={{ flex:1 }}
+                        //onLoadProgress={e => console.log(e.nativeEvent.progress)}
+                    />
+            </View>
+        )
+    }
+    /*render() {
         return (
             <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
                 <View style={styles.rowItem}>
@@ -234,14 +256,15 @@ export default class UserAgreement extends Component {
                 </View>
             </ScrollView>
         );
-    }
+    }*/
 }
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: greyBG,
-        padding:15,
-        paddingBottom:350
+        flex:1
+        //padding:15,
+        //paddingBottom:350
     },
     rowItemTitle:{
         color:'#000',

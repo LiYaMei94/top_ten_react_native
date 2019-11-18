@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2019-11-04 11:48:35
- * @LastEditTime: 2019-11-07 15:43:55
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-11-15 16:16:50
+ * @LastEditors: liyamei
  * @Description: In User Settings Edit
  * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\HomePage\html.js
  */
@@ -21,7 +21,6 @@ import { ScreenHeight, headerHeight, headerPaddingTop, themeColor, borderColor, 
 
 import { addButtonStyle } from '../../assets/css/addButtonStyle';
 import ImagePicker from 'react-native-syan-image-picker';
-import HeaderComponent from '../../components/HeaderComponent';
 import BottomModal from '../../components/bottom_modal';
 
 const options = {
@@ -30,8 +29,32 @@ const options = {
     isCamera:false,//是否允许用户在内部拍照
     isCrop:false,//是否允许裁剪，imageCount 为1才生效
 };
+class HeaderComponent extends React.Component{
+    render(){
+        const {navigation,text}=this.props;
+        return(
+            <TouchableHighlight
+                onPress={() => navigation.state.params.navigatePress()}
+                underlayColor={themeColor}
+                style={[styles.headerRightButtonBox]}
+            >
+                <Text style={[styles.headerRightButton]} >{text}</Text>
+            </TouchableHighlight>
+        )
+    }
+}
 export default class Step3Page extends React.Component {
-    
+    static navigationOptions = ({ navigation }) => ({
+        title:'新增-选项',//navigation.getParam('title', '')
+        headerStyle: {
+            height: headerHeight,
+            paddingTop:headerPaddingTop,
+            elevation: 0,  // android去除阴影
+            borderBottomWidth:1,
+            borderBottomColor:borderColor
+        },
+        headerRight:<HeaderComponent navigation={navigation} text='下一步'></HeaderComponent>,
+    })
 
     constructor(props) {
         super(props);
@@ -43,10 +66,11 @@ export default class Step3Page extends React.Component {
             currentAddIndex:0,
             addData:props.navigation.getParam('addData', {}),
         }
+        this.next_step=this.next_step.bind(this);
     }
     
     componentDidMount() {
-        console.log(this.state.addData)
+        this.props.navigation.setParams({ navigatePress: this.next_step});
     }
     
     addHTML() {
@@ -139,10 +163,6 @@ export default class Step3Page extends React.Component {
         let { listDataArr, lineArr,isPicture } = this.state;
         return (
             <View style={styles.container}>
-                <HeaderComponent navigation={this.props.navigation}
-                    rightPress={() => this.next_step()}
-                    rightText='下一步'
-                    titie='新增' ></HeaderComponent>
                 <ScrollView style={{ width: '100%',paddingLeft: headerRightMarginRight,
                     paddingRight: headerRightMarginRight, }}
                     showsVerticalScrollIndicator={false}
@@ -308,6 +328,21 @@ const styles = StyleSheet.create({
         fontFamily: "iconfont",
         fontSize:13,
         color:'#fff'
-    }
+    },
+    //头部标题栏
+    headerRightButtonBox: {
+        marginRight: headerRightMarginRight,
+        width: 60,
+        height: 30,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius:10,
+        backgroundColor: themeColor,
+    },
+    headerRightButton:{
+        fontSize:15,
+        color:"#fff",
+        fontFamily:'iconfont'
+    },
 
 })

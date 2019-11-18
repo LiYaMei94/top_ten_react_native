@@ -1,11 +1,12 @@
 /*
- * @Author: your name
+ * @Descripttion: 路由
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-04 11:53:57
- * @LastEditTime: 2019-11-11 17:32:47
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\router.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-18 18:34:26
  */
+
 
 import React, { Component } from 'react';
 import { Easing, Animated,Text,StyleSheet ,View} from "react-native";
@@ -24,12 +25,13 @@ import AddArticlePage from './pages/AddArticlePage/html';
 import Step2Page from './pages/AddArticlePage/Step2Page';
 import Step3Page from './pages/AddArticlePage/Step3Page';
 
-
+import AddCommentPage from './pages/AddCommentPage/html';
 import MyInterestPage from './pages/MyInterestPage/html';
 import MyCollectionPage from './pages/MyCollectionPage/html';
+import MyAraftPage from './pages/MyAraftPage/html';
 import LoginPage from './pages/LoginRegisterPage/LoginPage';
 import RegisterPage from './pages/LoginRegisterPage/RegisterPage';
-import ContentDetailPage from './pages/ContentDetailPage/html';
+import HomePageDetail from './pages/HomePageDetail/html';
 
 import AboutPage from './pages/SystemPage/AboutPage';
 import SettingPage from './pages/SystemPage/SettingPage';
@@ -161,27 +163,13 @@ const router = createStackNavigator(
                 header: null,
             },
         },
+        AddCommentPage:AddCommentPage,
         RegisterPage:RegisterPage,
         LoginPage:LoginPage,
-        AddArticlePage:{
-            screen: AddArticlePage,
-            navigationOptions: {
-                header: null,
-            },
-        },
-        Step2Page:{
-            screen: Step2Page,
-            navigationOptions: {
-                header: null,
-            },
-        },
-        Step3Page:{
-            screen: Step3Page,
-            navigationOptions: {
-                header: null,
-            },
-        },
-        ContentDetailPage:ContentDetailPage,
+        AddArticlePage:AddArticlePage,
+        Step2Page:Step2Page,
+        Step3Page:Step3Page,
+        HomePageDetail:HomePageDetail,
         MyInterestPage:{
             screen: MyInterestPage,
             navigationOptions: {
@@ -191,25 +179,26 @@ const router = createStackNavigator(
         MyCollectionPage:{
             screen: MyCollectionPage,
             navigationOptions: {
-                title: '我的收藏',
+                header: null,
+            },
+        },
+        MyAraftPage:{
+            screen: MyAraftPage,
+            navigationOptions: {
+                header: null,
             },
         },
         AboutPage:{
             screen: AboutPage,
             navigationOptions: {
-                title: '关于 | 十佳',
+                header: null,
             },
         },
-        UserAgreement:{
-            screen: UserAgreement,
-            navigationOptions: {
-                title: '用户协议',
-            },
-        },
+        UserAgreement:UserAgreement,
         SettingPage:{
             screen: SettingPage,
             navigationOptions: {
-                title: '设置',
+                header: null,
             },
         }
     },

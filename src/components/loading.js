@@ -1,17 +1,27 @@
 /*
- * @Author: your name
- * @Date: 2019-10-24 11:12:20
- * @LastEditTime: 2019-10-28 17:07:14
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\hard_work\src\components\loading.js
+ * @Descripttion: 加载组件
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-06 17:17:42
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 19:11:07
  */
+
+
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import Spinkiter from 'react-native-spinkit';
 import { STATUS_BAR_HEIGHT,themeColor } from '../assets/css/common';
+import PropTypes from  'prop-types';
 export default class Loading extends React.Component {
+    static propTypes={
+        colors:PropTypes.array,
+        showSpinner:PropTypes.bool,
+        spinkerSize:PropTypes.number,
+        spinkerType:PropTypes.string,
+        spinkerColor:PropTypes.string
+    }
     static defaultProps = {
         showSpinner: true,
         spinkerSize: 40,

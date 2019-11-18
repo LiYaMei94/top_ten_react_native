@@ -1,53 +1,45 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:55:53
- * @LastEditTime: 2019-11-18 17:42:18
+ * @Descripttion: 我的草稿
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-15 16:31:46
  * @LastEditors: liyamei
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\MinePage\html.js
+ * @LastEditTime: 2019-11-15 18:15:07
  */
 
 
 
 import React, { Component } from 'react';
-import { 
-    Text, 
-    Image, 
-    ScrollView, 
-    View, 
-    TouchableHighlight, 
-    FlatList, 
-    Animated, 
-    DeviceEventEmitter, 
-    PanResponder,
-    ImageBackground,
-    NativeModules } from 'react-native';
+import { Text, FlatList, Image, View,TouchableHighlight} from 'react-native';
 import {styles} from './style';
-import ArticleList from '../../components/articleList';
-import ArticleListComponent from '../../components/articleListComponent';
-import {data} from '../HomePage/data.js';
-import {RightArrowIcon} from '../../assets/css/common';
-export default class MyList extends React.Component {
+import HeaderComponent from '../../components/HeaderComponent';
+import {headerHeight,RightArrowIcon} from '../../assets/css/common';
+import {data} from '../HomePage/data';
+export default class MyAraftPage extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            
+
         }
     }
+
     componentDidMount() {
-        //进入当前页修改个榜消息通知取消
-        DeviceEventEmitter.emit('navigation_msgChange', {});
         
     }
-    _renderItem(item,index){
-        return <AraftPageItem item={item} index={index} navigation={this.props.navigation}></AraftPageItem>
+    componentWillUnmount() {
     }
     render() {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container,{paddingTop:headerHeight}]}>
+                <HeaderComponent
+                    barStyle='light-content'
+                    titie='我的草稿' 
+                    navigation={this.props.navigation}
+                    isHeaderRight={false}
+                    ></HeaderComponent>
                 <FlatList
                     data={data}
-                    renderItem={this._renderItem.bind(this)}
+                    renderItem={(item,index)=><AraftPageItem item={item} index={index}></AraftPageItem>}
                     keyExtractor={(item, index) => index + ''}
                     showsVerticalScrollIndicator={false}
                     //ListEmptyComponent={<DataEmpty navigation={this.props.navigation} promptText={'没有' + tab[classifyIndex] + '类的文章哦~'}></DataEmpty>}
@@ -59,11 +51,9 @@ export default class MyList extends React.Component {
                 >
                 </FlatList>
             </View>
-
         );
     }
 }
-
 class AraftPageItem extends React.Component {
     render(){
         const {item:{item},index}=this.props;
@@ -85,9 +75,6 @@ class AraftPageItem extends React.Component {
                             <Text style={styles.article_content_Text_item}>1、东方雪人</Text>
                             <Text style={styles.article_content_Text_item}>2、chupacabra</Text>
                         </View>
-                    </View>
-                    <View style={styles.bottom_infoBar}>
-                        <Text style={styles.bottom_infoItem}>喜欢数12</Text>
                     </View>
                 </View>
             </TouchableHighlight>

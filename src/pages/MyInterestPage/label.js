@@ -1,11 +1,12 @@
 /*
- * @Author: your name
+ * @Descripttion: 我的兴趣标签
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-04 16:46:57
- * @LastEditTime: 2019-11-05 19:07:53
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\MyInterestPage\label.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 17:07:27
  */
+
 export const label=[
     {
         name:'零食',

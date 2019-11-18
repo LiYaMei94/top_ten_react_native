@@ -1,11 +1,12 @@
 /*
- * @Author: your name
+ * @Descripttion: 
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-07 11:08:17
- * @LastEditTime: 2019-11-11 13:56:37
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\HomePage\data.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 17:59:33
  */
+
 export const data = [
     {
         isLike: 0,

@@ -1,11 +1,12 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:48:35
- * @LastEditTime: 2019-11-11 11:51:12
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\HomePage\html.js
+ * @Descripttion: 首页
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-04 11:55:53
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-15 14:58:10
  */
+
 
 
 import React, { Component } from 'react';
@@ -17,6 +18,7 @@ import { listStyles } from '../../assets/css/listStyle';
 import DataEmpty from '../SystemPromptPage/DataEmpty';
 import ListFooterComponent from '../SystemPromptPage/ListFooterComponent';
 import ArticleList from '../../components/articleList';
+import ArticleListComponent from '../../components/articleListComponent';
 import {data} from './data';
 const tab = ['最新', '兴趣'];
 const lengthMax=3;
@@ -82,7 +84,7 @@ export default class HomePage extends React.Component {
     }
     _renderItem({item},index){
         const { classifyIndex,isLoadMore } = this.state;
-        return <ArticleList item={item} index={index} navigation={this.props.navigation}></ArticleList>
+        return <ArticleListComponent item={item} index={index} navigation={this.props.navigation}></ArticleListComponent>
         /*if(classifyIndex==0){
             return <CollectionItem item={item} index={index} navigation={this.props.navigation}></CollectionItem>
         }else{

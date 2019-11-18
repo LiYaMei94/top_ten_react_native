@@ -1,11 +1,12 @@
 /*
- * @Author: your name
+ * @Descripttion: 登录、注册样式表
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-04 14:44:17
- * @LastEditTime: 2019-11-04 16:18:12
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\LoginRegisterPage\style.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 17:57:30
  */
+
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 import {themeColor,borderColor,headerRightMarginRight} from '../../assets/css/common';

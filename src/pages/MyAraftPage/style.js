@@ -1,23 +1,22 @@
 /*
- * @Author: your name
- * @Date: 2019-11-11 10:28:46
- * @LastEditTime: 2019-11-18 17:43:37
+ * @Descripttion: 我的草稿
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-15 16:31:54
  * @LastEditors: liyamei
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\MyList\style.js
+ * @LastEditTime: 2019-11-15 18:19:24
  */
 
 
-
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import {greyBG,headerHeight,headerRightMarginRight} from '../../assets/css/common';
+import {StyleSheet} from 'react-native';
+import {greyBG,headerRightMarginRight} from '../../assets/css/common';
 export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        position: "relative",
+    container:{
+        flex:1,
         backgroundColor:greyBG
     },
+    
     //列表
     araftPageItem:{
         paddingLeft:headerRightMarginRight,
@@ -25,7 +24,7 @@ export const styles = StyleSheet.create({
         paddingTop:15,
         paddingBottom:20,
         backgroundColor:'#fff',
-        marginBottom:10  
+        marginBottom:5  
     },
     artilce_detail_btn:{
         fontFamily: 'iconfont',
@@ -62,9 +61,6 @@ export const styles = StyleSheet.create({
     },
     article_content_Text_item:{
 
-    },
-    bottom_infoItem:{
-        marginTop:10,
-        color:'#999'
     }
+    
 });

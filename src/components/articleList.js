@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 文章列表
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-07 11:22:27
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 17:45:45
+ */
 
 import React, { Component } from 'react';
 import {
@@ -14,8 +22,19 @@ import {
     NativeModules
 } from 'react-native';
 import {themeColor} from '../assets/css/common';
+import PropTypes from  'prop-types';
 const article_img_height=180;
 export default class ArticleList extends React.Component {
+    static propTypes={
+        index:PropTypes.number,
+        item:PropTypes.object,
+        navigation:PropTypes.object,
+        like:PropTypes.func,
+        pageType:PropTypes.string
+    }
+    static defaultProps ={
+        pageType:'homePage'
+    }
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +45,7 @@ export default class ArticleList extends React.Component {
     }
 
     render() {
-        const { index, item, lenght,navigation,isList,} = this.props;
+        const { index, item, navigation,pageType,} = this.props;
         return (
             <View style={[styles.articleItem, { }]}>
                 <TouchableHighlight
@@ -64,9 +83,13 @@ export default class ArticleList extends React.Component {
                         <Text style={[styles.article_info,{color:themeColor}]}>{item.label}</Text>
                         <View style={{flexDirection:"row"}}>
                             <Text style={[styles.article_info,{flex:1}]}>2019年11月7日</Text>
-                            <TouchableHighlight style={styles.likeBtn} underlayColor='#fff' onPress={() => this.props.like(item, index)}>
-                                <Text style={[styles.likeBtnIcon, { color: item.isLike == 1 ? "#FF3421" : '#999' }]}>{item.isLike == 1 ? '\ue6a1' : '\ue69d'}</Text>
-                            </TouchableHighlight>
+                            {
+                                pageType!='MyCollectionPage'?
+                                <TouchableHighlight style={styles.likeBtn} underlayColor='#fff' onPress={() => this.props.like(item, index)}>
+                                    <Text style={[styles.likeBtnIcon, { color: item.isLike == 1 ? "#FF3421" : '#999' }]}>{item.isLike == 1 ? '\ue6a1' : '\ue69d'}</Text>
+                                </TouchableHighlight>:null
+                            }
+                            
                         </View>
                     </View>
                 </TouchableHighlight>

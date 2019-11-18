@@ -1,11 +1,12 @@
 /*
- * @Author: your name
+ * @Descripttion: 文章列表样式表
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-04 18:39:34
- * @LastEditTime: 2019-11-07 11:38:52
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\assets\css\listStyle.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 16:58:55
  */
+
 
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';

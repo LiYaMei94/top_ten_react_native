@@ -1,10 +1,10 @@
 /*
- * @Author: your name
+ * @Descripttion:登录 
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-04 14:43:55
- * @LastEditTime: 2019-11-04 16:17:38
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\LoginRegisterPage\LoginPage.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-15 16:22:49
  */
 
 
@@ -22,7 +22,7 @@ class HeaderComponent extends React.Component{
                 underlayColor='transparent'
                 style={[styles.headerRightButtonBox]}
             >
-                <Text style={[styles.headerRightButton]} >{'\ue63b'}</Text>
+                <Text style={[styles.headerRightButton]} >{'\ue613'}</Text>
             </TouchableHighlight>
         )
     }
@@ -78,6 +78,18 @@ export default class LoginPage extends React.Component {
     login(){
 
     }
+    /**
+     *获取验证码
+     *
+     * @memberof RegisterPage
+     */
+    getAuthCode(){
+        if(this.state.phoneNumber!=''){
+
+        }else{
+            console.log('必须输入手机号')
+        }
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -114,22 +126,25 @@ export default class LoginPage extends React.Component {
                             selectionColor={themeColor} 
                             secureTextEntry={true} 
                             onChangeText={(text)=>this.inputChangeText(text,2)}
-                            placeholder='请输入密码'></TextInput>
+                            placeholder='请输入验证码'></TextInput>
+                        <TouchableHighlight style={styles.codeBtn} onPress={()=>this.getAuthCode()} underlayColor={themeColor}>
+                            <Text style={styles.codeBtnText}>获取验证码</Text>
+                        </TouchableHighlight>
                     </View>
-                    <TouchableHighlight  underlayColor='transparent'>
+                    {/*<TouchableHighlight  underlayColor='transparent'>
                         <Text style={styles.forgotPasswordText}>忘记密码？</Text>
-                    </TouchableHighlight>
+                    </TouchableHighlight>*/}
                     <TouchableHighlight style={[styles.pageCenterLine,styles.registerBtn]} onPress={()=>this.login()} underlayColor={themeColor}>
                         <Text style={styles.registerText}>登录</Text>
                     </TouchableHighlight>
                 </View>
-                <View style={[styles.pageBottom]}>
+                {/*<View style={[styles.pageBottom]}>
                     <Text style={styles.pageBottomText}>还没有账户？</Text>
                     <TouchableHighlight style={[styles.pageBottomBtn]} underlayColor='transparent' 
                         onPress={()=>this.props.navigation.navigate('RegisterPage')}>
                         <Text style={styles.pageBottomBtnText}>立即注册</Text>
                     </TouchableHighlight>
-                </View>
+                </View>*/}
             </View>
         );
     }

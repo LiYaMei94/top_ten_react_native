@@ -1,11 +1,12 @@
 /*
- * @Author: your name
+ * @Descripttion: 底部tab组件
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-04 12:02:38
- * @LastEditTime: 2019-11-11 11:58:55
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\components\tabbar.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-18 18:39:28
  */
+
 import React, { Component } from 'react';
 import {
     StyleSheet,
@@ -100,7 +101,7 @@ export default class TabbarAddButton extends Component {
                     style={[styles.tabItem, { position: 'absolute', bottom: 12, left: ScreenWidth / 5 * 2, width: ScreenWidth / 5 }]}
                     onPress={() => {
                         StatusBar.setBarStyle('dark-content');
-                        navigation.push('MyInterestPage',{title:'新增——选择标签',isAdd:true})}}
+                        navigation.push('AddArticlePage',{title:'新增——选择标签',isAdd:true})}}
                 >
                     <View
                         style={styles.tabItem}>

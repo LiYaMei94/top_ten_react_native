@@ -1,10 +1,12 @@
 /*
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-10-14 18:04:33
- * @LastEditTime: 2019-11-04 14:32:57
- * @LastEditors: Please set LastEditors
+ * @Descripttion: 设置
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-04 14:27:43
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 17:52:42
  */
+
 import React, { Component } from 'react';
 import {
     AppRegistry,
@@ -15,7 +17,8 @@ import {
     DeviceEventEmitter,
     View
 } from 'react-native';
-import {greyBG,RightArrowIcon} from '../../assets/css/common';
+import {greyBG,RightArrowIcon,headerHeight} from '../../assets/css/common';
+import HeaderComponent from '../../components/HeaderComponent';
 export default class SettingPage extends Component {
     constructor(props){
         super(props);
@@ -38,7 +41,13 @@ export default class SettingPage extends Component {
     render() {
         const {isLogin}=this.state;
         return (
-            <View style={styles.container}>
+            <View style={[styles.container,{paddingTop:headerHeight}]}>
+                <HeaderComponent
+                    barStyle='light-content'
+                    titie='设置' 
+                    navigation={this.props.navigation}
+                    isHeaderRight={false}
+                    ></HeaderComponent>
                 <TouchableHighlight
                     underlayColor='transparent'
                     onPress={()=>this.props.navigation.push('AboutPage')}

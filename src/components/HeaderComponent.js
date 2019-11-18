@@ -1,45 +1,94 @@
 /*
- * @Author: your name
- * @Date: 2019-11-06 14:14:57
- * @LastEditTime: 2019-11-06 15:40:06
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\components\HeaderLeftRight.js
+ * @Descripttion: 标题栏组件
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-06 18:43:39
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-15 16:01:31
  */
+
 import React from 'react';
 import {
     TouchableHighlight,
     Text,
     StyleSheet,
-    View
+    View,
+    StatusBar
 } from 'react-native';
-import { themeColor, headerRightMarginRight,headerHeight,headerPaddingTop,borderColor} from '../assets/css/common';
+import PropTypes from  'prop-types';
+import { themeColor, headerRightMarginRight, headerHeight, headerPaddingTop, borderColor } from '../assets/css/common';
 export default class HeaderComponent extends React.Component {
+    static propTypes ={
+        rightText:PropTypes.string,
+        leftText: PropTypes.string,
+        titie: PropTypes.string,
+        isHeaderRight:PropTypes.bool,
+        headerButtonTextLeft:PropTypes.object,
+        headerButtonTextRight:PropTypes.object,
+        headerStyle:PropTypes.object,
+        headerTitle:PropTypes.object,
+        //headerLeft:PropTypes.Component,
+        //headerRight:PropTypes.Component,
+        rightPress:PropTypes.func,
+        leftPress:PropTypes.func,
+        barStyle:PropTypes.string
+    }
     static defaultProps = {
         rightText: "保存",
         leftText: '\ue613',
-        titie: ''
+        titie: '标题',
+        isHeaderRight:false,
+        headerButtonTextLeft:{},
+        headerButtonTextRight:{},
+        headerStyle:{},
+        headerTitle:{},
+        barStyle:"dark-content"
+    }
+    _headerLeftRender() {
+        const { leftText,barStyle,navigation} = this.props;
+        if (this.props.headerLeft) {
+            return this.props.headerLeft;
+        }
+        return (
+            <TouchableHighlight
+                onPress={() => {
+                    StatusBar.setBarStyle(barStyle);
+                    navigation.goBack();
+                }}
+                underlayColor='rgba(0,0,0,0.2)'
+                style={[styles.headerLeftButtonBox]}
+            >
+                <Text style={[styles.headerButtonTextLeft,styles.headerButtonTextLeft,this.props.headerButtonTextLeft]} >{leftText}</Text>
+            </TouchableHighlight>
+        )
+    }
+
+    _headerRightRender() {
+        const {rightText} = this.props;
+        if (this.props.isHeaderRight) {
+            if (this.props.headerRight) {
+                return this.props.headerRight;
+            }
+            return (
+                <TouchableHighlight
+                    onPress={() => this.props.rightPress()}
+                    underlayColor={themeColor}
+                    style={[styles.headerRightButtonBox,this.props.headerRightButtonBox]}
+                >
+                    <Text style={[styles.headerButtonTextRight,styles.headerButtonTextRight,this.props.headerButtonTextRight]} >{rightText}</Text>
+                </TouchableHighlight>
+            )
+        }
+        return null;
+        
     }
     render() {
-        const { navigation,rightText, leftText, titie } = this.props;
-        //console.log(this.props)
+        const {titie} = this.props;
         return (
-            <View style={styles.header}>
-                <TouchableHighlight
-                    onPress={() => navigation.goBack()}
-                    underlayColor='rgba(0,0,0,0.2)'
-                    style={[styles.headerLeftButtonBox]}
-                >
-                    <Text style={[styles.headerRightButton,{fontFamily:"iconfont",color:"#666",fontSize:22}]} >{leftText}</Text>
-                </TouchableHighlight>
-                <Text style={styles.headerTitle}>{titie}</Text>
-                <TouchableHighlight
-                    onPress={()=>this.props.rightPress()}
-                    underlayColor={themeColor}
-                    style={[styles.headerRightButtonBox]}
-                >
-                    <Text style={[styles.headerRightButton]} >{rightText}</Text>
-                </TouchableHighlight>
+            <View style={[styles.headerStyle,this.props.headerStyle]}>
+                {this._headerLeftRender()}
+                <Text style={[styles.headerTitle,this.props.headerTitle]}>{titie}</Text>
+                {this._headerRightRender()}
             </View>
 
         )
@@ -48,27 +97,32 @@ export default class HeaderComponent extends React.Component {
 
 const styles = StyleSheet.create({
 
-    header:{
-        flexDirection:"row",
-        paddingTop:headerPaddingTop,
-        height:headerHeight,
-        alignItems:"center",
-        borderBottomWidth:1,
-        borderBottomColor:borderColor,
+    headerStyle: {
+        flexDirection: "row",
+        paddingTop: headerPaddingTop,
+        height: headerHeight,
+        alignItems: "center",
+        borderBottomWidth: 1,
+        borderBottomColor: borderColor,
+        position:"absolute",
+        top:0,
+        left:0,
+        right: 0,
+        backgroundColor:'#fff'
     },
-    headerTitle:{
-        flex:1,
-        fontSize:15,
+    headerTitle: {
+        flex: 1,
+        fontSize: 18,
         textAlign:"left"
     },
-    headerLeftButtonBox:{
-        width: 35,
-        height: 35,
+    headerLeftButtonBox: {
+        width: 40,
+        height: 40,
         justifyContent: "center",
         alignItems: "center",
-        marginLeft: headerRightMarginRight,
-        borderRadius:50,
-        marginRight:headerRightMarginRight
+        marginLeft: 10,
+        borderRadius: 50,
+        marginRight: 10
     },
     headerRightButtonBox: {
         width: 60,
@@ -79,9 +133,13 @@ const styles = StyleSheet.create({
         backgroundColor: themeColor,
         marginRight: headerRightMarginRight
     },
-    headerRightButton: {
-        fontSize: 15,
-        color: "#fff",
-        
+    headerButtonTextLeft:{
+        fontFamily: "iconfont", 
+        color: "#666", 
+        fontSize: 22
     },
+    headerButtonTextRight:{
+        fontSize:14,
+        color:'#fff'
+    }
 });

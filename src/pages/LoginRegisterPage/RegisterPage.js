@@ -1,11 +1,12 @@
 /*
- * @Author: your name
+ * @Descripttion: 注册
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-04 14:44:10
- * @LastEditTime: 2019-11-04 16:18:27
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\LoginRegisterPage\RegisterPage.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 17:56:21
  */
+
 
 
 import React, { Component } from 'react';
@@ -25,7 +26,7 @@ class HeaderComponent extends React.Component{
                 underlayColor='transparent'
                 style={[styles.headerRightButtonBox]}
             >
-                <Text style={[styles.headerRightButton]} >{'\ue63b'}</Text>
+                <Text style={[styles.headerRightButton]} >{'\ue613'}</Text>
             </TouchableHighlight>
         )
     }

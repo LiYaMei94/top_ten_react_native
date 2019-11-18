@@ -1,10 +1,10 @@
 /*
- * @Author: your name
+ * @Descripttion: 公共样式表
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-04 11:54:44
- * @LastEditTime: 2019-11-11 15:15:14
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\assets\css\common.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-15 16:07:57
  */
 
 
@@ -66,7 +66,7 @@ export const headerStyle={//标题栏样式
 
 export const headerTitleStyle={//标题栏标题样式
     fontWeight: 'normal',
-    fontSize:15
+    fontSize:18
 }
 
 export const headerTintColor='#666';//标题栏标题颜色

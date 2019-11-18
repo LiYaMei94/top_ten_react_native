@@ -1,11 +1,13 @@
 /*
- * @Author: your name
- * @Date: 2019-10-23 14:39:12
- * @LastEditTime: 2019-11-04 14:20:44
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /c:\Users\123\Desktop\react_native_appc:\Users\123\Desktop\weekend_exhibition\src\components\head_portraits.js
+ * @Descripttion: 头像组件
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-04 14:17:26
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 19:14:33
  */
+
+
 
 import React, { Component } from 'react';
 import {
@@ -14,12 +16,24 @@ import {
     Image,
     TouchableHighlight
 } from 'react-native';
+import PropTypes from  'prop-types';
 export default class HeadPortraits extends Component {
+    static propTypes={
+        header_img:PropTypes.string,
+        width:PropTypes.number,
+        height:PropTypes.number,
+        iconStyleFontSize:PropTypes.number,
+        iconStyleFontColor:PropTypes.string,
+        navigation:PropTypes.object,
+        head_portrait:PropTypes.object,
+        _onPress:PropTypes.func
+    }
     static defaultProps = {
         header_img:'',//头像地址
         width:50, //头像大小
         height:50,//头像大小
         iconStyleFontSize:24,//没有图片时字体图标的大小
+        iconStyleFontColor:'#9D9D9D'//没有图片时字体图标的颜色
     }
     constructor(props){
         super(props);
@@ -31,22 +45,25 @@ export default class HeadPortraits extends Component {
         
     }
     _onPress(){
-        
+        const {navigation}=this.props;
+        if(this.props._onPress){
+            this.props._onPress();
+        }
     }
     render() {
-        const { header_img, navigation, width, height, iconStyleFontSize,style} = this.props;
+        const { header_img, navigation, width, height, iconStyleFontSize,head_portrait,iconStyleFontColor} = this.props;
         return (
             <TouchableHighlight
                 underlayColor='#E0E0E0'
                 activeOpacity={1}
-                onPress={this._onPress.bind(this)}
-                style={[styles.head_portrait, { width: width, height: height },style]}
+                onPress={()=>this._onPress()}
+                style={[styles.head_portrait,head_portrait, { width: width, height: height }]}
             >
                 {//<Image style={{ width: '100%', height: '100%', borderRadius: 50 }} source={{uri:header_img}}></Image>
                     //header_img != '' ?
-                    header_img == '' ?
+                    header_img != '' ?
                         <Image style={{ width: '100%', height: '100%', borderRadius: 50 }} source={require('../assets/images/header.jpg')}></Image>
-                        : <Text style={[styles.iconStyle, { fontSize: iconStyleFontSize, color: '#9D9D9D' }]}>{'\ue614'}</Text>
+                        : <Text style={[styles.iconStyle, { fontSize: iconStyleFontSize, color:iconStyleFontColor  }]}>{'\ue67d'}</Text>
                 }
             </TouchableHighlight>
         );

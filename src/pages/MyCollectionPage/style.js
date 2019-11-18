@@ -1,11 +1,12 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:51:03
- * @LastEditTime: 2019-11-06 16:00:03
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\HomePage\style.js
+ * @Descripttion: 我的收藏
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-04 14:40:27
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 17:46:12
  */
+
 
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';

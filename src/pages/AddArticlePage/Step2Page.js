@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2019-11-04 11:48:35
- * @LastEditTime: 2019-11-07 15:41:01
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-11-15 16:12:42
+ * @LastEditors: liyamei
  * @Description: In User Settings Edit
  * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\HomePage\html.js
  */
@@ -23,21 +23,46 @@ import { ScreenHeight, headerHeight, headerPaddingTop, themeColor, borderColor, 
 import { addButtonStyle } from '../../assets/css/addButtonStyle';
 
 
-import HeaderComponent from '../../components/HeaderComponent';
+class HeaderComponent extends React.Component{
+    render(){
+        const {navigation,text}=this.props;
+        return(
+            <TouchableHighlight
+                onPress={() => navigation.state.params.navigatePress()}
+                underlayColor={themeColor}
+                style={[styles.headerRightButtonBox]}
+            >
+                <Text style={[styles.headerRightButton]} >{text}</Text>
+            </TouchableHighlight>
+        )
+    }
+}
 
 export default class Step2Page extends React.Component {
-
+    static navigationOptions = ({ navigation }) => ({
+        title:'新增-标题、简介',//navigation.getParam('title', '')
+        headerStyle: {
+            height: headerHeight,
+            paddingTop:headerPaddingTop,
+            elevation: 0,  // android去除阴影
+            borderBottomWidth:1,
+            borderBottomColor:borderColor
+        },
+        headerRight:<HeaderComponent navigation={navigation} text='下一步'></HeaderComponent>,
+    })
 
     constructor(props) {
         super(props);
         this.state = {
-            selectedArr: JSON.parse(props.navigation.getParam('selectedArr', [])),
+            selectedArr: props.navigation.getParam('selectedArr', []),
             title:"",
             desc:""
         }
+        this.next_step=this.next_step.bind(this);
     }
 
     componentDidMount() {
+        this.props.navigation.setParams({ navigatePress: this.next_step});
     }
 
     next_step(){
@@ -57,10 +82,6 @@ export default class Step2Page extends React.Component {
         const {  } = this.state;
         return (
             <View style={styles.container}>
-                <HeaderComponent navigation={this.props.navigation}
-                    rightPress={() => this.next_step()}
-                    rightText='下一步'
-                    titie='新增' ></HeaderComponent>
                 <View style={{
                     width:'100%',
                     paddingLeft: headerRightMarginRight,
@@ -109,5 +130,20 @@ const styles = StyleSheet.create({
         alignItems: "center",
         elevation: 5,
         marginBottom:20
-    }
+    },
+    //头部标题栏
+    headerRightButtonBox: {
+        marginRight: headerRightMarginRight,
+        width: 60,
+        height: 30,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius:10,
+        backgroundColor: themeColor,
+    },
+    headerRightButton:{
+        fontSize:15,
+        color:"#fff",
+        fontFamily:'iconfont'
+    },
 })

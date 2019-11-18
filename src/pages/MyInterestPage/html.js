@@ -1,15 +1,16 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:48:35
- * @LastEditTime: 2019-11-07 19:02:33
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\HomePage\html.js
+ * @Descripttion: 我的兴趣
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-04 14:38:23
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-15 16:13:02
  */
 
 
+
 import React, { Component } from 'react';
-import { Text, TouchableHighlight, ScrollView, View, Modal, TextInput, KeyboardAvoidingView,ToastAndroid } from 'react-native';
+import { Text, TouchableHighlight, StatusBar, View, Modal, TextInput, KeyboardAvoidingView,ToastAndroid } from 'react-native';
 import { styles } from './style';
 import { addButtonStyle } from '../../assets/css/addButtonStyle';
 import { label } from './label';
@@ -32,6 +33,11 @@ export default class MyInterestPage extends React.Component {
     }
     componentWillUnmount() {
     }
+    /**
+     *更新选择的数组
+     *
+     * @memberof MyInterestPage
+     */
     updateSelected() {
         const { labelArr } = this.state;
         let temp = [];
@@ -71,7 +77,7 @@ export default class MyInterestPage extends React.Component {
             if(this.state.selectedArr.length==0){
                 ToastAndroid.show('请选择标签',700);
             }else{
-                this.props.navigation.push('Step2Page', { selectedArr: JSON.stringify(this.state.selectedArr) })
+                this.props.navigation.push('Step2Page', { selectedArr: this.state.selectedArr })
             }
         } else {
 
@@ -81,12 +87,15 @@ export default class MyInterestPage extends React.Component {
     render() {
         const { labelArr, selectedArr, isAdd, isShowAddLabelModal } = this.state;
         return (
-            <View style={styles.container}>
-                <View style={{ width: ScreenWidth, height: ScreenHeight, alignItems: "center" }}>
-                    <HeaderComponent navigation={this.props.navigation}
-                        rightPress={this.saveSelected.bind(this)}
-                        rightText={isAdd ? '下一步' : '保存'}
-                        titie={this.props.navigation.getParam('title', '我的兴趣')} ></HeaderComponent>
+            <View style={[styles.container,{paddingTop:headerHeight}]}>
+                <HeaderComponent
+                    barStyle='light-content'
+                    titie={this.props.navigation.getParam('title', '我的兴趣')} 
+                    navigation={this.props.navigation}
+                    rightPress={this.saveSelected.bind(this)}
+                    isHeaderRight={true}
+                    rightText={isAdd ? '下一步' : '保存'}></HeaderComponent>
+                <View style={{ width: ScreenWidth, height: (ScreenHeight-headerHeight), alignItems: "center" }}>
                     <View style={styles.labelContainer}>
                         {
                             labelArr.map((item, index) => {

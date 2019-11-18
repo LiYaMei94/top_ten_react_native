@@ -1,11 +1,12 @@
 /*
- * @Author: your name
+ * @Descripttion: 入口
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-04 11:14:46
- * @LastEditTime: 2019-11-11 15:12:47
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\App.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-14 16:57:29
  */
+
 
 
 import React, { Component } from 'react';

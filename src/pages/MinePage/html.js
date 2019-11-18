@@ -1,11 +1,12 @@
 /*
- * @Author: your name
+ * @Descripttion: 我的
+ * @version: 
+ * @Author: liyamei
  * @Date: 2019-11-04 11:55:53
- * @LastEditTime: 2019-11-07 18:59:47
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\MinePage\html.js
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-15 16:39:32
  */
+
 
 
 
@@ -35,9 +36,13 @@ const lineData=[
         route:'MyCollectionPage'
     },
     {
+        name:'我的草稿',
+        route:'MyAraftPage'
+    },
+    /*{
         name:'邀请好友',
         route:''
-    },
+    },*/
     {
         name:"关于",
         route:'AboutPage'
@@ -64,7 +69,7 @@ export default class MinePage extends React.Component {
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../../assets/images/mineTopBg.jpg')} style={styles.mine_top}>
-                    <HeadPortraits style={{marginLeft:30}} navigation={this.props.navigation} width={60} height={60} header_img={''} iconStyleFontSize={45}></HeadPortraits>
+                    <HeadPortraits head_portrait={{marginLeft:30}} navigation={this.props.navigation} width={60} height={60} header_img={''} iconStyleFontSize={35}></HeadPortraits>
                     {
                         isLogin ?
                             <View style={styles.mine_top_left}>
@@ -96,18 +101,16 @@ export default class MinePage extends React.Component {
 class Line extends Component {
     linePress(){
         const {item,index,navigation}=this.props;
-        if(index==2){
-
-        }else{
-            StatusBar.setBarStyle('dark-content');
-            navigation.push(item.route,{});
-        }
+        StatusBar.setBarStyle('dark-content');
+        navigation.push(item.route,{});
     }
     render(){
         const {item,index,navigation}=this.props;
         //console.log(this.props)
         return(
-            <TouchableHighlight style={[styles.mine_content_line,{borderBottomWidth:index==lineData.length-1?0:1,}]} onPress={this.linePress.bind(this)} underlayColor='white'>
+            <TouchableHighlight 
+                style={[styles.mine_content_line,{borderBottomWidth:index==lineData.length-1?0:1,}]} 
+                onPress={this.linePress.bind(this)} underlayColor='white'>
                 <View style={styles.mine_content_line_wrap}>
                     <Text style={styles.mine_content_line_text}>{item.name}</Text>
                     <Text style={[styles.iconStyle, styles.mine_content_line_icon]}> {RightArrowIcon}</Text>
