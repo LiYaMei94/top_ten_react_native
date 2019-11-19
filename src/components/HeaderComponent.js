@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-06 18:43:39
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-15 16:01:31
+ * @LastEditTime: 2019-11-19 11:57:23
  */
 
 import React from 'react';
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginLeft: 10,
         borderRadius: 50,
-        marginRight: 10
+        marginRight: 15
     },
     headerRightButtonBox: {
         width: 60,

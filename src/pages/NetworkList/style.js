@@ -1,10 +1,10 @@
 /*
- * @Author: your name
- * @Date: 2019-11-11 10:28:46
- * @LastEditTime: 2019-11-18 17:31:01
+ * @Descripttion: 网榜
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-11 10:29:56
  * @LastEditors: liyamei
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\MyList\style.js
+ * @LastEditTime: 2019-11-19 14:46:09
  */
 
 

@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-04 14:27:43
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-14 17:52:42
+ * @LastEditTime: 2019-11-19 12:06:18
  */
 
 import React, { Component } from 'react';
@@ -50,11 +50,21 @@ export default class SettingPage extends Component {
                     ></HeaderComponent>
                 <TouchableHighlight
                     underlayColor='transparent'
+                    onPress={()=>{}}
+                    style={{backgroundColor:'#fff'}}
+                >
+                    <View style={[styles.setLine]}>
+                        <Text style={styles.lineLeft}>清除缓存</Text>
+                        <Text style={styles.rightArrow}>{RightArrowIcon}</Text>
+                    </View>
+                </TouchableHighlight>
+                <TouchableHighlight
+                    underlayColor='transparent'
                     onPress={()=>this.props.navigation.push('AboutPage')}
                     style={{backgroundColor:'#fff'}}
                 >
                     <View style={[styles.setLine]}>
-                        <Text style={styles.lineLeft}>其他</Text>
+                        <Text style={styles.lineLeft}>关于</Text>
                         <Text style={styles.rightArrow}>{RightArrowIcon}</Text>
                     </View>
                 </TouchableHighlight>

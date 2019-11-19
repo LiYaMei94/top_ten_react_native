@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-06 16:21:34
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-18 17:13:38
+ * @LastEditTime: 2019-11-19 16:35:05
  */
 
 export const HTML1 = `
@@ -29,7 +29,15 @@ export const HTML1 = `
 
         h2 {
             width: 100%;
-            height: 0.3rem;
+            margin:0.2rem 0;
+            font-size: 0.6rem;
+        }
+
+        .articleLabel {
+            color: #666;
+            margin-bottom: 0.2rem;
+            float: left;
+            font-size: 0.3rem;
         }
 
         .container {
@@ -38,10 +46,7 @@ export const HTML1 = `
             box-sizing: border-box;
         }
 
-        .articleLabel {
-            color: #666;
-            margin-bottom: 5px
-        }
+        
 
         .articleDesc {
             margin-top: 0.4rem;
@@ -63,7 +68,7 @@ export const HTML1 = `
         .contentImg {
             display: block;
             width: 100%;
-            height: auto,
+            height: auto;
         }
 
         .lineText {
@@ -108,19 +113,21 @@ export const HTML1 = `
 
 <body>
     <div class="container">
-        <!-- <h2>10大最稀有最罕见的奇葩动物</h2>
-        <div class='articleLabel'>
-            <span>来源：</span>
-            <span>网络</span>
+        <h2>10大最稀有最罕见的奇葩动物</h2>
+        <div style="overflow: hidden;">
+            <div class='articleLabel'>
+                <span>来源：</span>
+                <span>网络</span>
+            </div>
+            <div class='articleLabel'>
+                <span>标签：</span>
+                <span>动物</span>
+            </div>
+            <div class='articleLabel'>
+                <span>2019年11月6日</span>
+                <!--<span style='float:right'>喜欢：123</span>-->
+            </div>
         </div>
-        <div class='articleLabel'>
-            <span>标签：</span>
-            <span>动物</span>
-        </div>
-        <div class='articleLabel'>
-            <span>2019年11月6日</span>
-            <span style='float:right'>喜欢：123</span>
-        </div>-->
         <div class='articleDesc'>
             天下之大，无奇不有，有我们不知道的，也有我们没有探索过的。不要大惊小怪，或许世界上某个地方有着几乎我们以前闻所未闻见所未见的怪异动物，不仅极其罕见世间少有，你连名字都叫不出来，且其狰狞的面目无不让人看得目瞪口呆，不知你有没有兴趣和胆量一睹它们的芳颜呢？
         </div>
@@ -173,7 +180,15 @@ export const HTML2 = `
 
             h2 {
                 width: 100%;
-                height: 0.3rem;
+                margin:0.2rem 0;
+                font-size: 0.6rem;
+            }
+    
+            .articleLabel {
+                color: #666;
+                margin-bottom: 0.2rem;
+                float: left;
+                font-size: 0.3rem;
             }
 
             .container {
@@ -182,10 +197,7 @@ export const HTML2 = `
                 box-sizing: border-box;
             }
 
-            .articleLabel {
-                color: #666;
-                margin-bottom: 5px
-            }
+            
 
             .articleDesc {
                 margin-top: 0.4rem;
@@ -207,7 +219,7 @@ export const HTML2 = `
             .contentImg {
                 display: block;
                 width: 100%;
-                height: auto,
+                height: auto;
             }
 
             .lineText {
@@ -251,19 +263,21 @@ export const HTML2 = `
     </head>
     <body>
         <div class="container">
-        <!--<h2>10大最稀有最罕见的奇葩动物</h2>
-             <div class='articleLabel'>
-                <span>来源：</span>
-                <span>网络</span>
+            <h2>10大最稀有最罕见的奇葩动物</h2>
+            <div style="overflow: hidden;">
+                <div class='articleLabel'>
+                    <span>来源：</span>
+                    <span>网络</span>
+                </div>
+                <div class='articleLabel'>
+                    <span>标签：</span>
+                    <span>动物</span>
+                </div>
+                <div class='articleLabel'>
+                    <span>2019年11月6日</span>
+                    <!--<span style='float:right'>喜欢：123</span>-->
+                </div>
             </div>
-            <div class='articleLabel'>
-                <span>标签：</span>
-                <span>动物</span>
-            </div>
-            <div class='articleLabel'>
-                <span>2019年11月6日</span>
-                <span style='float:right'>喜欢：123</span>
-            </div>-->
             <div class='articleDesc'>天下之大，无奇不有，有我们不知道的，也有我们没有探索过的。不要大惊小怪，或许世界上某个地方有着几乎我们以前闻所未闻见所未见的怪异动物，不仅极其罕见世间少有，你连名字都叫不出来，且其狰狞的面目无不让人看得目瞪口呆，不知你有没有兴趣和胆量一睹它们的芳颜呢？</div>
             <div class='articleContent'>
                 <div class='contentLine'>

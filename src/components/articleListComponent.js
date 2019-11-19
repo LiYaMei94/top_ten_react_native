@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-07 11:22:27
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-18 18:34:37
+ * @LastEditTime: 2019-11-19 11:55:35
  */
 
 import React, { Component } from 'react';
@@ -59,8 +59,8 @@ export default class ArticleListComponent extends React.Component {
                                 {
                                     item.listImg.length == 1 ?
                                         <View style={[styles.user_action,{alignItems:"flex-end",flex:1}]}>
-                                            <Text style={[styles.user_action_item, {color:'#999'}]}>来源：网络</Text>
-                                            <Text style={[styles.user_action_item, { textAlign: "center",color:'#999' }]}>3个喜欢</Text>
+                                            <Text style={[styles.user_action_item, {color:'#999',textAlignVertical:"center"}]}>来源：网络</Text>
+                                            <Text style={[styles.user_action_item, { textAlign: "center",color:'#999',textAlignVertical:"center" }]}>3个喜欢</Text>
                                             {
                                                 /*pageType!='MyCollectionPage'?
                                                 <TouchableHighlight style={[styles.user_action_item,{}]} underlayColor='#fff' onPress={() => this.props.like(item, index)}>
@@ -97,8 +97,8 @@ export default class ArticleListComponent extends React.Component {
                         {
                             item.listImg.length != 1 ?
                                 <View style={styles.user_action}>
-                                    <Text style={[styles.user_action_item, {color:'#999'}]}>来源：网络</Text>
-                                    <Text style={[styles.user_action_item, { textAlign: "center",color:'#999' }]}>3个喜欢</Text>
+                                    <Text style={[styles.user_action_item, {color:'#999',textAlignVertical:"center"}]}>来源：网络</Text>
+                                    <Text style={[styles.user_action_item, { textAlign: "center",color:'#999',textAlignVertical:"center" }]}>3个喜欢</Text>
                                     {
                                         /*pageType!='MyCollectionPage'?
                                         <TouchableHighlight style={[styles.user_action_item,{}]} underlayColor='#fff' onPress={() => this.props.like(item, index)}>
@@ -167,6 +167,8 @@ const styles = StyleSheet.create({
     user_action_item: {
         flex: 1,
         alignItems: "center",
+        height:40,
+        justifyContent:"center"
     },
 
     article_info: {
@@ -177,6 +179,6 @@ const styles = StyleSheet.create({
 
     likeBtnIcon: {
         fontFamily: 'iconfont',
-        fontSize: 19,
+        fontSize: 15,
     },
 });

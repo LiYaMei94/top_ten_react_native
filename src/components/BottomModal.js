@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-07 13:48:28
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-14 19:11:46
+ * @LastEditTime: 2019-11-19 11:51:23
  */
 
 
@@ -91,6 +91,7 @@ export default class bottom_modal extends React.Component {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
+        height:'100%',
         position: "absolute",
         top: 0,
         paddingLeft: 10,
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
     },
     bottom_picker: {
         position: "absolute",
-        bottom: 10,
+        bottom: 70,
         left: 10,
         width: '100%',
     },

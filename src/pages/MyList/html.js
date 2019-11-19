@@ -1,11 +1,12 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:55:53
- * @LastEditTime: 2019-11-18 17:42:18
+ * @Descripttion: 个榜
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-11 10:28:35
  * @LastEditors: liyamei
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\MinePage\html.js
+ * @LastEditTime: 2019-11-19 14:52:23
  */
+
 
 
 
@@ -23,8 +24,8 @@ import {
     ImageBackground,
     NativeModules } from 'react-native';
 import {styles} from './style';
-import ArticleList from '../../components/articleList';
-import ArticleListComponent from '../../components/articleListComponent';
+import ArticleList from '../../components/ArticleList';
+import ArticleListComponent from '../../components/ArticleListComponent';
 import {data} from '../HomePage/data.js';
 import {RightArrowIcon} from '../../assets/css/common';
 export default class MyList extends React.Component {
@@ -66,9 +67,9 @@ export default class MyList extends React.Component {
 
 class AraftPageItem extends React.Component {
     render(){
-        const {item:{item},index}=this.props;
+        const {item:{item},index,navigation}=this.props;
         return(
-            <TouchableHighlight>
+            <TouchableHighlight underlayColor='#fff' onPress={()=>navigation.push('MyListDetailPage')}>
                 <View style={styles.araftPageItem}>
                     <View style={styles.itemTop}>
                         <Text style={styles.article_title}>10大最稀有最罕见的奇葩动物</Text>

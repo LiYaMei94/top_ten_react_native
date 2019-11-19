@@ -1,10 +1,10 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:55:53
- * @LastEditTime: 2019-11-18 18:37:51
+ * @Descripttion: 网榜
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-11 10:29:56
  * @LastEditors: liyamei
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\pages\MinePage\html.js
+ * @LastEditTime: 2019-11-19 14:45:56
  */
 
 
@@ -23,8 +23,8 @@ import {
     TouchableOpacity,
     NativeModules } from 'react-native';
 import {styles} from './style';
-import ArticleList from '../../components/articleList';
-import ArticleListComponent from '../../components/articleListComponent';
+import ArticleList from '../../components/ArticleList';
+import ArticleListComponent from '../../components/ArticleListComponent';
 import {data} from '../HomePage/data.js';
 export default class NetworkList extends React.Component {
     constructor(props) {

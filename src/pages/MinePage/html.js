@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-04 11:55:53
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-15 16:39:32
+ * @LastEditTime: 2019-11-19 13:57:39
  */
 
 
@@ -25,7 +25,7 @@ import {
     NativeModules } from 'react-native';
 import { styles } from './style';
 import {RightArrowIcon} from '../../assets/css/common';
-import HeadPortraits from '../../components/head_portraits';
+import HeadPortraits from '../../components/HeadPortraits';
 const lineData=[
     {
         name:'我的兴趣',
@@ -42,11 +42,11 @@ const lineData=[
     /*{
         name:'邀请好友',
         route:''
-    },*/
+    },
     {
         name:"关于",
         route:'AboutPage'
-    },
+    },*/
     {
         name:"设置",
         route:'SettingPage'

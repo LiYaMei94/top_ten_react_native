@@ -1,11 +1,12 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:51:03
- * @LastEditTime: 2019-11-18 18:51:04
+ * @Descripttion: 新增个榜
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-04 12:00:23
  * @LastEditors: liyamei
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\HomePage\style.js
+ * @LastEditTime: 2019-11-19 14:43:39
  */
+
 
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
@@ -29,7 +30,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         position: "relative",
-        paddingBottom:20,
+        //paddingBottom:20,
         alignItems:"center"
     },
     //标题和简介
@@ -48,12 +49,65 @@ export const styles = StyleSheet.create({
     lineInput:{
         fontSize:16,
         flex:1,
+        borderBottomColor: borderColor,
     },
     //选项
-    optionLineTop:{
-        flexDirection:'row',
-        alignItems:"center"
-    }
+    lineTitle: {
+        fontSize: 20,
+        height: 50,
+        textAlignVertical: "center",
+        fontFamily: "iconfont",
+        color: 'red',
+        width: 25
+    },
+    //图片添加
+    imgContainer:{
+        flexDirection:"row",
+        alignItems:"center",
+    },
+    addImgBtn:{
+        width:110,
+        height:110,
+        borderRadius:12,
+        borderColor:borderColor,
+        justifyContent:"center",
+        alignItems:"center",
+        marginRight:10,
+        position:"relative",
+        marginBottom:15,
+        marginTop:10
+    },
+    addImgBtnIcon:{
+        fontFamily: "iconfont",
+        fontSize:50,
+        color:borderColor
+    },
+    deleteImgBtn:{
+        position:"absolute",
+        width:20,
+        height:20,
+        justifyContent:"center",
+        alignItems:"center",
+        backgroundColor:'red',
+        borderRadius:50,
+        top:5,
+        right: 5,
+    },
+    deleteImg:{
+        fontFamily: "iconfont",
+        fontSize:13,
+        color:'#fff'
+    },
+    selectBtn: {
+        width: 100,
+        height: 45,
+        backgroundColor: themeColor,
+        borderRadius: 30,
+        justifyContent: "center",
+        alignItems: "center",
+        elevation: 5,
+        marginTop:15
+    },
     /*contentLine:{
         flexDirection:"row",
         alignItems:"flex-start",
@@ -71,16 +125,7 @@ export const styles = StyleSheet.create({
         flex:1,
         textAlignVertical:"top",
     },
-    selectBtn: {
-        width: 100,
-        height: 45,
-        backgroundColor: themeColor,
-        borderRadius: 30,
-        justifyContent: "center",
-        alignItems: "center",
-        elevation: 5,
-        marginTop:15
-    },
+    
     //选项内容
     listItem:{
         width:'100%'

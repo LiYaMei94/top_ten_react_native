@@ -1,11 +1,13 @@
-
 /*
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-10-10 16:03:17
- * @LastEditTime: 2019-11-06 17:23:03
- * @LastEditors: Please set LastEditors
+ * @Descripttion: 数据加载失败时的组件
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-06 17:16:10
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-19 14:46:59
  */
+
+
 import React, { Component } from 'react';
 import { 
     Text, 

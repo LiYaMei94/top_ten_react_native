@@ -1,10 +1,10 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 首页数据
  * @version: 
  * @Author: liyamei
  * @Date: 2019-11-07 11:08:17
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-14 17:59:33
+ * @LastEditTime: 2019-11-19 14:44:03
  */
 
 export const data = [

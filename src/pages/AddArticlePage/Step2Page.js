@@ -1,11 +1,12 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:48:35
- * @LastEditTime: 2019-11-15 16:12:42
+ * @Descripttion: 新增个榜第二步（废弃）
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-05 19:13:15
  * @LastEditors: liyamei
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\HomePage\html.js
+ * @LastEditTime: 2019-11-19 14:43:00
  */
+
 import React from 'react';
 import {
     StyleSheet,

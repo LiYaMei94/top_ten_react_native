@@ -13,9 +13,9 @@ import { Text, FlatList, Image, View,TouchableHighlight} from 'react-native';
 import {styles} from './style';
 import {listStyles} from '../../assets/css/listStyle';
 import HeaderComponent from '../../components/HeaderComponent';
-import ArticleListComponent from '../../components/articleListComponent';
+import ArticleListComponent from '../../components/ArticleListComponent';
 import {headerHeight} from '../../assets/css/common';
-import ArticleList from '../../components/articleList';
+import ArticleList from '../../components/ArticleList';
 import {data} from '../HomePage/data';
 export default class MyCollectionPage extends React.Component {
     constructor(props) {

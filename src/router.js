@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-04 11:53:57
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-18 18:34:26
+ * @LastEditTime: 2019-11-19 16:32:39
  */
 
 
@@ -32,6 +32,8 @@ import MyAraftPage from './pages/MyAraftPage/html';
 import LoginPage from './pages/LoginRegisterPage/LoginPage';
 import RegisterPage from './pages/LoginRegisterPage/RegisterPage';
 import HomePageDetail from './pages/HomePageDetail/html';
+import MyListDetailPage from './pages/MyListDetail/html';
+import RecommePage from './pages/RecommePage/html';
 
 import AboutPage from './pages/SystemPage/AboutPage';
 import SettingPage from './pages/SystemPage/SettingPage';
@@ -39,7 +41,7 @@ import UserAgreement from './pages/SystemPage/UserAgreement';
 
 
 //路由组件
-import Tab from './components/tabbar';
+import Tab from './components/Tabbar';
 
 //底部tabbar的图标
 const getTabBarIcon = (navigation, focused, tintColor) => {
@@ -103,7 +105,10 @@ const TabNavigator = createBottomTabNavigator(
                     navigationOptions: {
                         title: '网榜',
                         headerStyle:headerStyle,
-                        headerTitleStyle:headerTitleStyle
+                        headerTitleStyle:headerTitleStyle,
+                        headerTitleContainerStyle:{
+                            justifyContent:"center"
+                        }
                     },
                 },
             }
@@ -125,7 +130,10 @@ const TabNavigator = createBottomTabNavigator(
                     navigationOptions: {
                         title: '个榜',
                         headerStyle:headerStyle,
-                        headerTitleStyle:headerTitleStyle
+                        headerTitleStyle:headerTitleStyle,
+                        headerTitleContainerStyle:{
+                            justifyContent:"center"
+                        }
                     },
                 },
             }
@@ -170,6 +178,8 @@ const router = createStackNavigator(
         Step2Page:Step2Page,
         Step3Page:Step3Page,
         HomePageDetail:HomePageDetail,
+        MyListDetailPage:MyListDetailPage,
+        RecommePage:RecommePage,
         MyInterestPage:{
             screen: MyInterestPage,
             navigationOptions: {

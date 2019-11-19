@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-04 18:25:45
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 18:26:21
+ * @LastEditTime: 2019-11-19 14:58:38
  */
 
 
@@ -49,6 +49,14 @@ export const styles = StyleSheet.create({
         textAlign:"center",
         textAlignVertical:"center",
         borderRadius:10
+    },
+    //排行榜
+    ranking_container:{
+
+    },
+    ranking_list:{
+        paddingLeft:headerRightMarginRight,
+        paddingRight:headerRightMarginRight,
     },
     //评论列表
     commentListContainer:{
@@ -110,12 +118,5 @@ export const styles = StyleSheet.create({
     },
     likeButtonText:{
         fontFamily:'iconfont',
-    },
-    //没有评论时
-    commentEmpty:{
-        justifyContent:"center",
-        alignItems:"center",
-        width:'100%',
-        height:130
     }
 });

@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-18 14:44:15
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-18 15:02:17
+ * @LastEditTime: 2019-11-19 16:49:46
  */
 
 
@@ -16,8 +16,14 @@ import {
     TouchableHighlight,
 } from 'react-native';
 import {themeColor} from '../assets/css/common';
-import HeadPortraits from './head_portraits';
+import HeadPortraits from './HeadPortraits';
+import PropTypes from  'prop-types';
 export default class CommentItem extends Component {
+    static propTypes={
+        item:PropTypes.object,
+        navigation:PropTypes.object,
+        CommentItemStyle:PropTypes.object
+    }
     static defaultProps = {
         
     }

@@ -1,11 +1,12 @@
 /*
- * @Author: your name
- * @Date: 2019-11-04 11:48:35
- * @LastEditTime: 2019-11-15 16:16:50
+ * @Descripttion: 新增个榜第三步（废弃）
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-06 11:31:26
  * @LastEditors: liyamei
- * @Description: In User Settings Edit
- * @FilePath: \react_native_appc:\Users\123\Desktop\top_ten\src\HomePage\html.js
+ * @LastEditTime: 2019-11-19 14:43:24
  */
+
 import React from 'react';
 import {
     StyleSheet,
@@ -21,7 +22,7 @@ import { ScreenHeight, headerHeight, headerPaddingTop, themeColor, borderColor, 
 
 import { addButtonStyle } from '../../assets/css/addButtonStyle';
 import ImagePicker from 'react-native-syan-image-picker';
-import BottomModal from '../../components/bottom_modal';
+import BottomModal from '../../components/BottomModal';
 
 const options = {
     imageCount: 2,//最大选择图片数目

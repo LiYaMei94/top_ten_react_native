@@ -4,17 +4,17 @@
  * @Author: liyamei
  * @Date: 2019-11-04 18:25:45
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 18:25:44
+ * @LastEditTime: 2019-11-19 16:52:29
  */
 
 
 
 import React, { Component } from 'react';
-import { Text, Modal, TouchableHighlight, View, ScrollView, KeyboardAvoidingView, TextInput, TouchableOpacity,RefreshControl } from 'react-native';
+import { Text, Modal, TouchableHighlight, View, ScrollView, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
 import { styles } from './style';
-import { headerHeight, headerPaddingTop, borderColor, ScreenHeight, themeColor } from '../../assets/css/common';
+import { headerStyle, ScreenHeight, themeColor } from '../../assets/css/common';
 import { WebView } from "react-native-webview";
-import { HTML1, HTML2 } from './HTML/homePageHtml';
+import { HTML } from './HTML/MyListPageHtml';
 import UserActionComponent from '../../components/UserActionComponent';
 import CommentItem from '../../components/CommentItem';
 import Loading from '../../components/Loading';
@@ -37,16 +37,10 @@ class HeaderComponent extends React.Component {
     }
 }
 
-export default class ContentDetailPage extends React.Component {
+export default class MyListDetailPage extends React.Component {
     static navigationOptions = ({ navigation }) => ({
-        title: '内容详情',//navigation.getParam('title', '')
-        headerStyle: {
-            height: headerHeight,
-            paddingTop: headerPaddingTop,
-            elevation: 0,  // android去除阴影
-            borderBottomWidth: 1,
-            borderBottomColor: borderColor
-        },
+        title: '个榜内容详情',//navigation.getParam('title', '')
+        headerStyle: headerStyle,
         //headerRight:<HeaderComponent navigation={navigation}></HeaderComponent>
     })
     constructor(props) {
@@ -59,8 +53,7 @@ export default class ContentDetailPage extends React.Component {
             isLoad: true,
             isShowCommentInput: false,
             commentInputText:'',
-            isShowBackTop:false,
-            refreshing:false
+            isShowBackTop:false
         }
     }
 
@@ -116,26 +109,9 @@ export default class ContentDetailPage extends React.Component {
     _scrollTo(y) {
         this.ScrollView.scrollTo({ x: 0, y: y, animated: true })
     }
-    /**
-     * 监听上拉触底
-     * @param {*} e 
-     */ 
-    _contentViewScroll (e){
-        let offsetY = e.nativeEvent.contentOffset.y; //滑动距离
-        let contentSizeHeight = e.nativeEvent.contentSize.height; //scrollView contentSize高度
-        let oriageScrollHeight = e.nativeEvent.layoutMeasurement.height; //scrollView高度
-        if (offsetY + oriageScrollHeight >= contentSizeHeight){//上拉加载
-            //获取新的数据
-
-        }
-    };
-    /**
-     *下拉刷新
-     *
-     * @memberof ContentDetailPage
-     */
-    onRefresh (){
-        console.log(1)
+    setRecommend(index){
+        this.props.navigation.push('RecommePage')
+        //alert(`我是第${index}名推荐`)
     }
     render() {
         const { 
@@ -145,35 +121,24 @@ export default class ContentDetailPage extends React.Component {
             WebViewHeight, 
             isLoad, 
             isShowBackTop, 
-            refreshing,
             isShowCommentInput } = this.state;
         if (isLoad) {
             //return <Loading></Loading>
         }
         return (
             <View style={styles.container}>
-                <ScrollView 
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={refreshing}
-                            onRefresh={()=>this.onRefresh()}
-                        />
+                <ScrollView onScroll={(e)=>{
+                    //console.log(e.nativeEvent.contentOffset)
+                    if(e.nativeEvent.contentOffset.y>WebViewHeight){
+                        this.setState({
+                            isShowBackTop:true
+                        })
+                    }else{
+                        this.setState({
+                            isShowBackTop:false
+                        })
                     }
-                    onMomentumScrollEnd = {(e)=>this._contentViewScroll(e)}
-                    onScroll={(e)=>{
-                        //console.log(e.nativeEvent.contentOffset)
-                        if(e.nativeEvent.contentOffset.y>WebViewHeight){
-                            this.setState({
-                                isShowBackTop:true
-                            })
-                        }else{
-                            this.setState({
-                                isShowBackTop:false
-                            })
-                        }
-                    }} 
-                    showsVerticalScrollIndicator={false} 
-                    style={{ flex: 1 }} ref={(ref) => this.ScrollView = ref}>
+                }} showsVerticalScrollIndicator={false} style={{ flex: 1 }} ref={(ref) => this.ScrollView = ref}>
                     {/*<View style={styles.articleInfo}>
                         <Text style={styles.articleTitle}>10大最稀有最罕见的奇葩动物</Text>
                         <View style={{ flexDirection: "row", alignItems: "center", marginTop: 20 }}>
@@ -187,36 +152,38 @@ export default class ContentDetailPage extends React.Component {
                             </TouchableHighlight>
                         </View>
                     </View>*/}
+                    {/*<View style={styles.ranking_container}>
+                        <View style={styles.ranking_list}>
+                            <Text style={{}}>第一名：东方雪人</Text>
+                            <Text>这头在四川古老的原始丛林中发现的怪兽被人称为东方雪人它的出现让科学家也感到困惑。据英国《每日电讯报》4月5日报道?近日?中国四川省的猎人们在当地原始森林中捕获到一只奇怪的动物，当时他们还以为这是一头熊。</Text>
+                        </View>
+                    </View>*/}
                     <WebView
                         onMessage={(event) => {
-                            //console.log(event)
+                            console.log(event)
                             try {
                                 const action = JSON.parse(event.nativeEvent.data);
                                 const { type, data } = action;
-                                this.updateWebViewHeight(data);
+                                if(type=='setHeight'){
+                                    this.updateWebViewHeight(data);
+                                }else{
+                                    this.setRecommend(data);
+                                }
                             } catch (error) {
                                 console.log('错误', error);
                             }
                         }}
                         style={{ width: '100%', height: WebViewHeight }}
-                        source={{ html: classifyIndex == 0 ? HTML1 : HTML2 }}
+                        source={{ html: HTML }}
                     />
                     <TouchableHighlight underlayColor="#fff" onPress={()=>this._like()} style={styles.likeButton}>
                         <Text style={styles.likeButtonText}>{'\ue69d'} 喜欢</Text>
                     </TouchableHighlight>
                     <View style={styles.commentListContainer}>
-                        
                         {
-                            data.length ==0?
                             data.map((item, index) => {
                                 return <CommentItem item={item} navigation={this.props.navigation} key={index}></CommentItem>
-                            }):
-                            <View style={styles.commentEmpty}>
-                                <Text>还没有人评论，点击抢沙发~</Text>
-                                <TouchableOpacity style={[styles.likeButton,{marginTop:10}]}>
-                                    <Text>立即评论</Text>
-                                </TouchableOpacity>
-                            </View>
+                            })
                         }
                     </View>
                 </ScrollView>

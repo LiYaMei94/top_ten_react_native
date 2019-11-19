@@ -1,11 +1,13 @@
-
 /*
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-10-10 16:03:17
- * @LastEditTime: 2019-11-06 17:37:44
- * @LastEditors: Please set LastEditors
+ * @Descripttion: 列表尾部组件
+ * @version: 
+ * @Author: liyamei
+ * @Date: 2019-11-06 17:16:10
+ * @LastEditors: liyamei
+ * @LastEditTime: 2019-11-19 14:47:17
  */
+
+
 import React, { Component } from 'react';
 import { 
     Text, 
@@ -19,7 +21,7 @@ import {
     Animated } from 'react-native';
 
 import {ScreenWidth,ScreenHeight,greyBG,themeColor,headerHeight} from '../../assets/css/common';
-import Loading from '../../components/loading';
+import Loading from '../../components/Loading';
 
 export default class ListFooterComponent extends React.Component {
     static defaultProps = {

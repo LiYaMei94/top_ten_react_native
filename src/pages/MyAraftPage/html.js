@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-15 16:31:46
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-15 18:15:07
+ * @LastEditTime: 2019-11-19 12:03:27
  */
 
 
@@ -39,7 +39,7 @@ export default class MyAraftPage extends React.Component {
                     ></HeaderComponent>
                 <FlatList
                     data={data}
-                    renderItem={(item,index)=><AraftPageItem item={item} index={index}></AraftPageItem>}
+                    renderItem={(item,index)=><AraftPageItem item={item} index={index} navigation={this.props.navigation}></AraftPageItem>}
                     keyExtractor={(item, index) => index + ''}
                     showsVerticalScrollIndicator={false}
                     //ListEmptyComponent={<DataEmpty navigation={this.props.navigation} promptText={'没有' + tab[classifyIndex] + '类的文章哦~'}></DataEmpty>}
@@ -56,9 +56,9 @@ export default class MyAraftPage extends React.Component {
 }
 class AraftPageItem extends React.Component {
     render(){
-        const {item:{item},index}=this.props;
+        const {item:{item},index,navigation}=this.props;
         return(
-            <TouchableHighlight>
+            <TouchableHighlight underlayColor='#fff' onPress={()=>navigation.push('AddArticlePage')}>
                 <View style={styles.araftPageItem}>
                     <View style={styles.itemTop}>
                         <Text style={styles.article_title}>10大最稀有最罕见的奇葩动物</Text>
