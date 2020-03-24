@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-04 12:00:23
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 14:42:36
+ * @LastEditTime: 2019-11-20 16:34:52
  */
 
 import React from 'react';
@@ -24,10 +24,10 @@ import {
 } from 'react-native';
 import { styles } from './style';
 import { ScreenHeight, headerHeight, headerPaddingTop, themeColor, headerRightMarginRight, borderColor } from '../../assets/css/common';
-import { addButtonStyle } from '../../assets/css/addButtonStyle';
 import ImagePicker from 'react-native-syan-image-picker';
 import BottomModal from '../../components/BottomModal';
-
+import ThemeColorButton from '../../components/ThemeColorButton';
+import Alert from '../../components/Alert';
 const options = {
     imageCount: 2,//最大选择图片数目
     isRecordSelected:true,//记录当前已选中的图片
@@ -70,8 +70,10 @@ export default class AddArticlePage extends React.Component {
             listDataArr:[],
             isPicture:false,
             currentAddIndex:0,
+            current_img_index:0,
             title:'',
-            desc:''
+            desc:'',
+            alertModalVisible:false
         }
         this.publishPress = this.publishPress.bind(this);
     }
@@ -185,8 +187,24 @@ export default class AddArticlePage extends React.Component {
             console.log(listDataArr)
         })
     }
+    /**
+     *删除图片
+     *
+     * @param {*} state
+     * @memberof AddArticlePage
+     */
+    _closeAlert(state){
+        let {listDataArr,currentAddIndex,current_img_index}=this.state;
+        if(state){//确定
+            listDataArr[currentAddIndex].images.splice(current_img_index, 1);
+        }
+        this.setState({
+            alertModalVisible:false,
+            listDataArr:listDataArr
+        })
+    }
     render() {
-        const { lineArr,listDataArr,isPicture,currentAddIndex } = this.state;
+        const { lineArr,listDataArr,isPicture,currentAddIndex,alertModalVisible,current_img_index } = this.state;
         return (
             <View style={styles.container}>
                 <ScrollView showsVerticalScrollIndicator={false} style={{width:'100%'}}>
@@ -224,7 +242,7 @@ export default class AddArticlePage extends React.Component {
                                                 onChangeText={(text) => {
                                                     listDataArr[index] = { title: text, images: [],desc:'' };
                                                     this.setState({
-                                                        listDataArr: listDataArr
+                                                        listDataArr: listDataArr,
                                                     }, () => {
                                                         console.log(listDataArr)
                                                     })
@@ -236,7 +254,7 @@ export default class AddArticlePage extends React.Component {
                                                 onChangeText={(text) => {
                                                     listDataArr[index].desc=text;
                                                     this.setState({
-                                                        listDataArr: listDataArr
+                                                        listDataArr: listDataArr,
                                                     }, () => {
                                                         console.log(listDataArr)
                                                     })
@@ -250,7 +268,6 @@ export default class AddArticlePage extends React.Component {
                                                                 ImagePicker.removeAllPhoto();
                                                                 this.setState({
                                                                     isPicture: !this.state.isPicture,
-                                                                    currentAddIndex: index
                                                                 })
                                                             }}
                                                             underlayColor='#fff'
@@ -266,12 +283,7 @@ export default class AddArticlePage extends React.Component {
                                                                     <Image style={{ width: '100%', height: '100%', borderRadius: 12, }} source={{ uri: img_item.uri }}></Image>
                                                                     <TouchableHighlight style={styles.deleteImgBtn}
                                                                         underlayColor='red'
-                                                                        onPress={() => {
-                                                                            listDataArr[index].images.splice(img_index, 1);
-                                                                            this.setState({
-                                                                                listDataArr: listDataArr
-                                                                            })
-                                                                        }}
+                                                                        onPress={() => this.setState({alertModalVisible:true,currentAddIndex: index,current_img_index:img_index})}
                                                                     >
                                                                         <Text style={styles.deleteImg}>{'\ue62b'}</Text>
                                                                     </TouchableHighlight>
@@ -294,21 +306,9 @@ export default class AddArticlePage extends React.Component {
                                 <Text style={[styles.lineInput, { textAlignVertical: "center", paddingLeft: 3, color: themeColor,height:50, }]}>添加选项</Text>
                             </View>
                         </TouchableHighlight>
-                        <View style={{ flexDirection: "row",justifyContent:"center" }}>
-                            <TouchableHighlight
-                                style={[styles.selectBtn, { marginRight: 20 }]}
-                                underlayColor={themeColor}
-                                onPress={this.addDraft.bind(this)}
-                            >
-                                <Text style={addButtonStyle.selectBtnText}>草稿</Text>
-                            </TouchableHighlight>
-                            <TouchableHighlight
-                                style={[styles.selectBtn]}
-                                underlayColor={themeColor}
-                                onPress={this.publishPress.bind(this)}
-                            >
-                                <Text style={addButtonStyle.selectBtnText}>发布</Text>
-                            </TouchableHighlight>
+                        <View style={{ flexDirection: "row",justifyContent:"center",marginTop:15 }}>
+                            <ThemeColorButton buttonIcon='草稿' optionButton={{marginRight: 20,width:100}} buttonPress={this.addDraft.bind(this)}></ThemeColorButton>
+                            <ThemeColorButton buttonIcon='发布' optionButton={{width:100}} buttonPress={this.publishPress.bind(this)}></ThemeColorButton>
                         </View>
                     </View>
                 </ScrollView>
@@ -317,6 +317,8 @@ export default class AddArticlePage extends React.Component {
                     setValueChange={this.setValueChange.bind(this)}
                     isVisible={isPicture}
                     picker_item_text={['相机', '相册']}></BottomModal>
+                {/*alert */}
+                <Alert modalVisible={alertModalVisible} close_alert={(state)=>this._closeAlert(state)}></Alert>
             </View>
         )
     }

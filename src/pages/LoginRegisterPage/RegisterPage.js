@@ -2,11 +2,10 @@
  * @Descripttion: 注册
  * @version: 
  * @Author: liyamei
- * @Date: 2019-11-04 14:44:10
- * @LastEditors: liyamei
- * @LastEditTime: 2019-11-14 17:56:21
+ * @Date: 2019-11-06 18:43:40
+ * @LastEditors  : liyamei
+ * @LastEditTime : 2020-01-06 16:34:33
  */
-
 
 
 import React, { Component } from 'react';
@@ -26,7 +25,7 @@ class HeaderComponent extends React.Component{
                 underlayColor='transparent'
                 style={[styles.headerRightButtonBox]}
             >
-                <Text style={[styles.headerRightButton]} >{'\ue613'}</Text>
+                <Text style={[styles.headerRightButton]} >{'\ue63b'}</Text>
             </TouchableHighlight>
         )
     }
@@ -107,7 +106,7 @@ export default class RegisterPage extends React.Component {
                         <View style={styles.pageTopIconBg}>
                             <Text style={styles.pageTopIcon}>{'\ue67d'}</Text>
                         </View>
-                        <Text style={styles.pageTopText}>欢迎加入十佳</Text>
+                        <Text style={styles.pageTopText}>欢迎加入识图</Text>
                     </View>
                 </View>
                 <View style={styles.pageCenter}>

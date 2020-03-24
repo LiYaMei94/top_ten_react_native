@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-06 17:16:10
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 14:46:44
+ * @LastEditTime: 2019-11-20 16:51:48
  */
 
 
@@ -20,7 +20,7 @@ import {
     UIManager,
     Animated } from 'react-native';
 
-import {ScreenWidth,ScreenHeight,greyBG,themeColor,headerHeight} from '../../assets/css/common';
+import {ScreenWidth,ScreenHeight,greyBG,themeColor,headerHeight} from '../assets/css/common';
 export default class DataEmpty extends React.Component {
     static defaultProps = {
         promptText:"暂无数据"
@@ -37,16 +37,16 @@ export default class DataEmpty extends React.Component {
         const {promptText,navigation}=this.props;
         return (
             <View style={styles.container} >
-                <Text style={styles.Icon}>{'\ue6dc'}</Text>
+                <Text style={styles.Icon}>{'\ue60b'}</Text>
                 <Text style={{fontSize:15}}>{promptText}</Text>
                 {
-                    navigation?
+                    /*navigation?
                     <TouchableHighlight
                         underlayColor={greyBG}
                         onPress={()=>navigation.push('PostMessage')}
                     >
                         <Text style={styles.reloadBtn}>去发帖吧</Text>
-                    </TouchableHighlight>:null
+                    </TouchableHighlight>:null*/
                 }
             </View>
         );
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         width:ScreenWidth
     },
     Icon:{
-        fontSize:45,
+        fontSize:80,
         fontFamily:"iconfont",
         color:themeColor,
         marginBottom:10

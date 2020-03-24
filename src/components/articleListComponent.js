@@ -3,8 +3,8 @@
  * @version: 
  * @Author: liyamei
  * @Date: 2019-11-07 11:22:27
- * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 11:55:35
+ * @LastEditors  : liyamei
+ * @LastEditTime : 2020-01-02 11:47:16
  */
 
 import React, { Component } from 'react';
@@ -17,7 +17,7 @@ import {
     Dimensions,
     Animated,
     DeviceEventEmitter,
-    PanResponder,
+    TouchableOpacity,
     Image,
     NativeModules
 } from 'react-native';
@@ -45,7 +45,7 @@ export default class ArticleListComponent extends React.Component {
     }
 
     render() {
-        const { index, item, navigation, pageType, } = this.props;
+        const { item:{item}, navigation, pageType, } = this.props;
         return (
             <View style={[styles.articleItem, {}]}>
                 <TouchableHighlight
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         paddingTop: 10,
         paddingBottom: 10,
-        marginBottom: 10
+        marginBottom: 10,
     },
     article_content: {
     },

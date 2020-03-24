@@ -98,16 +98,7 @@ export const styles = StyleSheet.create({
         fontSize:13,
         color:'#fff'
     },
-    selectBtn: {
-        width: 100,
-        height: 45,
-        backgroundColor: themeColor,
-        borderRadius: 30,
-        justifyContent: "center",
-        alignItems: "center",
-        elevation: 5,
-        marginTop:15
-    },
+    
     /*contentLine:{
         flexDirection:"row",
         alignItems:"flex-start",

@@ -3,8 +3,8 @@
  * @version: 
  * @Author: liyamei
  * @Date: 2019-11-04 14:43:55
- * @LastEditors: liyamei
- * @LastEditTime: 2019-11-15 16:22:49
+ * @LastEditors  : liyamei
+ * @LastEditTime : 2020-01-06 16:31:58
  */
 
 
@@ -12,7 +12,8 @@
 import React, { Component } from 'react';
 import { Text, TextInput, TouchableHighlight, View } from 'react-native';
 import {styles} from './style';
-import {headerHeight,headerPaddingTop,themeColor} from '../../assets/css/common';
+import {headerHeight,headerTitleStyle,themeColor,headerStyle} from '../../assets/css/common';
+import ThemeColorButton from '../../components/ThemeColorButton';
 class HeaderComponent extends React.Component{
     render(){
         const {navigation}=this.props;
@@ -32,15 +33,12 @@ export default class LoginPage extends React.Component {
         title: `登录`,
         headerLeft:<HeaderComponent navigation={navigation}></HeaderComponent>,
         headerStyle: {
-            height: headerHeight,
-            paddingTop:headerPaddingTop,
-            elevation: 0,  // android去除阴影
+            ...headerStyle,
             borderBottomWidth:0,
             backgroundColor:themeColor
         },
         headerTitleStyle: {
-            fontWeight: 'normal',
-            fontSize: 18,
+            ...headerTitleStyle,
             color:"#fff"
         },
     })
@@ -98,7 +96,7 @@ export default class LoginPage extends React.Component {
                         <View style={[styles.pageTopIconBg,{backgroundColor:"#fff"}]}>
                             <Text style={[styles.pageTopIcon,{color:themeColor}]}>{'\ue67d'}</Text>
                         </View>
-                        <Text style={[styles.pageTopText,{color:'#fff'}]}>欢迎加入十佳</Text>
+                        <Text style={[styles.pageTopText,{color:'#fff'}]}>欢迎加入识图</Text>
                     </View>
                 </View>
                 <View style={styles.pageCenter}>
@@ -134,9 +132,8 @@ export default class LoginPage extends React.Component {
                     {/*<TouchableHighlight  underlayColor='transparent'>
                         <Text style={styles.forgotPasswordText}>忘记密码？</Text>
                     </TouchableHighlight>*/}
-                    <TouchableHighlight style={[styles.pageCenterLine,styles.registerBtn]} onPress={()=>this.login()} underlayColor={themeColor}>
-                        <Text style={styles.registerText}>登录</Text>
-                    </TouchableHighlight>
+                    <ThemeColorButton buttonIcon='登录' optionButton={{elevation:0,marginTop:15}} buttonPress={this.login.bind(this)}></ThemeColorButton>
+                    
                 </View>
                 {/*<View style={[styles.pageBottom]}>
                     <Text style={styles.pageBottomText}>还没有账户？</Text>

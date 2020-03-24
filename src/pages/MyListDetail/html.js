@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-04 18:25:45
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 16:52:29
+ * @LastEditTime: 2019-11-20 14:55:42
  */
 
 
@@ -110,7 +110,7 @@ export default class MyListDetailPage extends React.Component {
         this.ScrollView.scrollTo({ x: 0, y: y, animated: true })
     }
     setRecommend(index){
-        this.props.navigation.push('RecommePage')
+        this.props.navigation.push('RecommePage',{rank_index:index})
         //alert(`我是第${index}名推荐`)
     }
     render() {
@@ -122,9 +122,9 @@ export default class MyListDetailPage extends React.Component {
             isLoad, 
             isShowBackTop, 
             isShowCommentInput } = this.state;
-        if (isLoad) {
-            //return <Loading></Loading>
-        }
+        /*if(isloading){
+            return <Loading></Loading>
+        }*/
         return (
             <View style={styles.container}>
                 <ScrollView onScroll={(e)=>{
@@ -139,25 +139,6 @@ export default class MyListDetailPage extends React.Component {
                         })
                     }
                 }} showsVerticalScrollIndicator={false} style={{ flex: 1 }} ref={(ref) => this.ScrollView = ref}>
-                    {/*<View style={styles.articleInfo}>
-                        <Text style={styles.articleTitle}>10大最稀有最罕见的奇葩动物</Text>
-                        <View style={{ flexDirection: "row", alignItems: "center", marginTop: 20 }}>
-                            <View style={{ flex: 1,flexDirection: "row", alignItems: "center", }}>
-                                <Text style={styles.articleInfoLine}>来源：网络、</Text>
-                                <Text>标签：动物、</Text>
-                                <Text>时间：2019年11月6日</Text>
-                            </View>
-                            <TouchableHighlight underlayColor={themeColor} onPress={() => this._collection()}>
-                                <Text style={styles.collection_button}>收藏</Text>
-                            </TouchableHighlight>
-                        </View>
-                    </View>*/}
-                    {/*<View style={styles.ranking_container}>
-                        <View style={styles.ranking_list}>
-                            <Text style={{}}>第一名：东方雪人</Text>
-                            <Text>这头在四川古老的原始丛林中发现的怪兽被人称为东方雪人它的出现让科学家也感到困惑。据英国《每日电讯报》4月5日报道?近日?中国四川省的猎人们在当地原始森林中捕获到一只奇怪的动物，当时他们还以为这是一头熊。</Text>
-                        </View>
-                    </View>*/}
                     <WebView
                         onMessage={(event) => {
                             console.log(event)

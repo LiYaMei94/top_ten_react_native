@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-04 18:25:45
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 14:58:38
+ * @LastEditTime: 2019-11-20 13:33:56
  */
 
 
@@ -31,33 +31,7 @@ export const styles = StyleSheet.create({
         color:"#666",
         fontFamily:'iconfont'
     },
-    //文章头部信息
-    articleInfo:{
-        paddingLeft:headerRightMarginRight,
-        paddingRight:headerRightMarginRight,
-        paddingTop:10
-    },
-    articleTitle:{
-        color:'#333',
-        fontSize:23
-    },
-    collection_button:{
-        width:50,
-        height:30,
-        backgroundColor:themeColor,
-        color:'#fff',
-        textAlign:"center",
-        textAlignVertical:"center",
-        borderRadius:10
-    },
-    //排行榜
-    ranking_container:{
-
-    },
-    ranking_list:{
-        paddingLeft:headerRightMarginRight,
-        paddingRight:headerRightMarginRight,
-    },
+    
     //评论列表
     commentListContainer:{
         width:'100%',

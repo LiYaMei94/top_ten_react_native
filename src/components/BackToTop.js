@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-19 13:55:25
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 16:48:23
+ * @LastEditTime: 2019-11-21 14:57:42
  */
 
 
@@ -12,7 +12,7 @@
 
 import React, { Component } from 'react';
 import { headerRightMarginRight, StyleSheet, Text, View,TouchableHighlight } from 'react-native';
-import { borderColor,themeColor } from '../assets/css/common';
+import { borderColor,themeColor,themeColorGgba } from '../assets/css/common';
 import PropTypes from  'prop-types';
 export default class BackToTop extends React.Component {
     static propTypes={
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         width:50,
         height:50,
         borderRadius:50,
-        backgroundColor:'rgba(79,119,230,0.8)',
+        backgroundColor:themeColorGgba,
         bottom:70,
         right: 15,
         justifyContent:"center",

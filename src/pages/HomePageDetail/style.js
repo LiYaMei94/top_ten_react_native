@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-04 18:25:45
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 18:26:21
+ * @LastEditTime: 2019-11-20 10:51:56
  */
 
 
@@ -90,6 +90,7 @@ export const styles = StyleSheet.create({
         width:50,
         height:30,
         backgroundColor:themeColor,
+        
         color:'#fff',
         textAlign:"center",
         textAlignVertical:"center",

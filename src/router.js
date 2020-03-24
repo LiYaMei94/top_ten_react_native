@@ -3,8 +3,8 @@
  * @version: 
  * @Author: liyamei
  * @Date: 2019-11-04 11:53:57
- * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 16:32:39
+ * @LastEditors  : liyamei
+ * @LastEditTime : 2020-01-06 16:42:07
  */
 
 
@@ -30,7 +30,7 @@ import MyInterestPage from './pages/MyInterestPage/html';
 import MyCollectionPage from './pages/MyCollectionPage/html';
 import MyAraftPage from './pages/MyAraftPage/html';
 import LoginPage from './pages/LoginRegisterPage/LoginPage';
-import RegisterPage from './pages/LoginRegisterPage/RegisterPage';
+import RegisterPage from './pages/LoginRegisterPage/RegisterPage'
 import HomePageDetail from './pages/HomePageDetail/html';
 import MyListDetailPage from './pages/MyListDetail/html';
 import RecommePage from './pages/RecommePage/html';
@@ -172,8 +172,8 @@ const router = createStackNavigator(
             },
         },
         AddCommentPage:AddCommentPage,
-        RegisterPage:RegisterPage,
-        LoginPage:LoginPage,
+		LoginPage:LoginPage,
+		RegisterPage:RegisterPage,
         AddArticlePage:AddArticlePage,
         Step2Page:Step2Page,
         Step3Page:Step3Page,

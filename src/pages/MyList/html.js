@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-11 10:28:35
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 14:52:23
+ * @LastEditTime: 2019-11-21 14:48:53
  */
 
 
@@ -20,43 +20,89 @@ import {
     FlatList, 
     Animated, 
     DeviceEventEmitter, 
-    PanResponder,
+    RefreshControl,
     ImageBackground,
     NativeModules } from 'react-native';
 import {styles} from './style';
-import ArticleList from '../../components/ArticleList';
-import ArticleListComponent from '../../components/ArticleListComponent';
+import DataEmpty from '../../components/DataEmpty';
+import ListFooterComponent from '../../components/ListFooterComponent';
+import Loading from '../../components/Loading';
 import {data} from '../HomePage/data.js';
-import {RightArrowIcon} from '../../assets/css/common';
+//const data =[];
+import {RightArrowIcon,themeColor} from '../../assets/css/common';
 export default class MyList extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            
+            isloading: true,//加载
+            isRefresh: false,// 下拉刷新
+            isLoadMore: true,// 加载更多
         }
     }
     componentDidMount() {
         //进入当前页修改个榜消息通知取消
         DeviceEventEmitter.emit('navigation_msgChange', {});
+        const that = this;
+        that.timer = setTimeout(function () {
+            that.setState({
+                isloading: false
+            })
+        }, 500)
         
     }
-    _renderItem(item,index){
-        return <AraftPageItem item={item} index={index} navigation={this.props.navigation}></AraftPageItem>
+    componentWillUnmount() {
+        this.timer && clearTimeout(this.timer);
+    }
+    
+    /**
+     *下拉刷新
+     * 
+     * @memberof HomePage
+     */
+    _onRefresh() {
+        if (!this.state.isRefresh) {
+            console.log('下拉刷新')
+        }
+    }
+    /**
+     *上拉加载
+     *
+     * @memberof HomePage
+     */
+    _onLoadMore() {
+        const that=this;
+        that.timer=setTimeout(function(){
+            that.setState({
+                isLoadMore:false
+            })
+        },1000)
+        console.log('上拉加载')
     }
     render() {
+        const { isloading,isLoadMore,isRefresh } = this.state;
+        /*if(isloading){
+            return <Loading></Loading>
+        }*/
         return (
             <View style={styles.container}>
                 <FlatList
                     data={data}
-                    renderItem={this._renderItem.bind(this)}
+                    renderItem={(item,index)=><AraftPageItem item={item} navigation={this.props.navigation}></AraftPageItem>}
                     keyExtractor={(item, index) => index + ''}
                     showsVerticalScrollIndicator={false}
-                    //ListEmptyComponent={<DataEmpty navigation={this.props.navigation} promptText={'没有' + tab[classifyIndex] + '类的文章哦~'}></DataEmpty>}
-                    //ListFooterComponent={<ListFooterComponent isLoadMore={isLoadMore}></ListFooterComponent>}
-                    //onRefresh={()=>this._onRefresh()}
-                    //refreshing={this.state.isRefresh}
-                    //onEndReached={()=>this._onLoadMore()}
-                    // onEndReachedThreshold={0.1}
+                    ListEmptyComponent={<DataEmpty navigation={this.props.navigation} ></DataEmpty>}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={isRefresh}
+                            onRefresh={() => this._onRefresh()}
+                            colors={[themeColor]}
+                            size={RefreshControl.SIZE.LARGE}
+                        //progressBackgroundColor='red'//指示器的背景色
+                        />
+                    }
+                    ListFooterComponent={<ListFooterComponent navigation={this.props.navigation} isLoadMore={isLoadMore}></ListFooterComponent>}
+                    onEndReached={() => this._onLoadMore()}
+                    onEndReachedThreshold={0.1}
                 >
                 </FlatList>
             </View>
@@ -67,7 +113,7 @@ export default class MyList extends React.Component {
 
 class AraftPageItem extends React.Component {
     render(){
-        const {item:{item},index,navigation}=this.props;
+        const {item:{item},navigation}=this.props;
         return(
             <TouchableHighlight underlayColor='#fff' onPress={()=>navigation.push('MyListDetailPage')}>
                 <View style={styles.araftPageItem}>

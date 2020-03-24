@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-06 16:21:34
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 16:35:05
+ * @LastEditTime: 2019-11-20 14:21:20
  */
 
 export const HTML1 = `
@@ -46,7 +46,39 @@ export const HTML1 = `
             box-sizing: border-box;
         }
 
-        
+        .list_author_container{
+            display: flex;
+            height: 1rem;
+            align-items: center;
+            background-color: #fff;
+            padding: 0 0.3rem;
+            box-sizing: border-box;
+        }
+        .list_author_left{
+            width: 1rem;
+            height: 1rem;
+            background-color: #F3F3F3;
+            border-radius: 50%;
+        }
+        .list_author_header{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .list_author_right{
+            flex: 1;
+            margin-left: 0.25rem;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+        .list_author{
+            color: #333;
+            font-size: 0.35rem;
+        }
+        .list_date{
+            color: #999;
+            font-size: 0.25rem;
+        }
 
         .articleDesc {
             margin-top: 0.4rem;
@@ -114,18 +146,13 @@ export const HTML1 = `
 <body>
     <div class="container">
         <h2>10大最稀有最罕见的奇葩动物</h2>
-        <div style="overflow: hidden;">
-            <div class='articleLabel'>
-                <span>来源：</span>
-                <span>网络</span>
+        <div class="list_author_container">
+            <div class="list_author_left">
+                <img class='list_author_header'  src="http://img3.imgtn.bdimg.com/it/u=2188301108,2208747323&fm=26&gp=0.jpg" alt="">
             </div>
-            <div class='articleLabel'>
-                <span>标签：</span>
-                <span>动物</span>
-            </div>
-            <div class='articleLabel'>
-                <span>2019年11月6日</span>
-                <!--<span style='float:right'>喜欢：123</span>-->
+            <div class="list_author_right">
+                <div class="list_author">榜单发起者</div>
+                <div class="list_date">2019年11月20日</div>
             </div>
         </div>
         <div class='articleDesc'>
@@ -197,7 +224,37 @@ export const HTML2 = `
                 box-sizing: border-box;
             }
 
-            
+            .list_author_container{
+                display: flex;
+                height: 1rem;
+                align-items: center;
+                background-color: #fff;
+            }
+            .list_author_left{
+                width: 1rem;
+                height: 1rem;
+                background-color: #F3F3F3;
+                border-radius: 50%;
+            }
+            .list_author_header{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+            .list_author_right{
+                flex: 1;
+                margin-left: 0.25rem;
+                box-sizing: border-box;
+                vertical-align: middle;
+            }
+            .list_author{
+                color: #333;
+                font-size: 0.35rem;
+            }
+            .list_date{
+                color: #999;
+                font-size: 0.25rem;
+            }
 
             .articleDesc {
                 margin-top: 0.4rem;
@@ -264,18 +321,13 @@ export const HTML2 = `
     <body>
         <div class="container">
             <h2>10大最稀有最罕见的奇葩动物</h2>
-            <div style="overflow: hidden;">
-                <div class='articleLabel'>
-                    <span>来源：</span>
-                    <span>网络</span>
+            <div class="list_author_container">
+                <div class="list_author_left">
+                    <img class='list_author_header'  src="http://img3.imgtn.bdimg.com/it/u=2188301108,2208747323&fm=26&gp=0.jpg" alt="">
                 </div>
-                <div class='articleLabel'>
-                    <span>标签：</span>
-                    <span>动物</span>
-                </div>
-                <div class='articleLabel'>
-                    <span>2019年11月6日</span>
-                    <!--<span style='float:right'>喜欢：123</span>-->
+                <div class="list_author_right">
+                    <div class="list_author">榜单发起者</div>
+                    <div class="list_date">2019年11月20日 | 网络</div>
                 </div>
             </div>
             <div class='articleDesc'>天下之大，无奇不有，有我们不知道的，也有我们没有探索过的。不要大惊小怪，或许世界上某个地方有着几乎我们以前闻所未闻见所未见的怪异动物，不仅极其罕见世间少有，你连名字都叫不出来，且其狰狞的面目无不让人看得目瞪口呆，不知你有没有兴趣和胆量一睹它们的芳颜呢？</div>

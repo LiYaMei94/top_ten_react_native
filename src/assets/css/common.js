@@ -3,8 +3,8 @@
  * @version: 
  * @Author: liyamei
  * @Date: 2019-11-04 11:54:44
- * @LastEditors: liyamei
- * @LastEditTime: 2019-11-15 16:07:57
+ * @LastEditors  : liyamei
+ * @LastEditTime : 2020-01-02 11:47:43
  */
 
 
@@ -51,7 +51,11 @@ export const borderColor = '#EEEDEB';
 
 export const greyBG = '#F3F3F3';
 
-export const themeColor = '#4f77e6';
+//export const themeColor = '#4f77e6';//紫色
+//export const themeColorGgba = 'rgba(79,119,230,0.8)';//紫色
+
+export const themeColor = '#66AF9E';//绿色
+export const themeColorGgba = 'rgba(102,175,158,0.8)';//绿色
 
 export const RightArrowIcon='\ue770';
 
@@ -72,7 +76,9 @@ export const headerTitleStyle={//标题栏标题样式
 export const headerTintColor='#666';//标题栏标题颜色
 
 export const tabBarOptions={//底部导航栏样式
-    activeTintColor: '#777',
+    //activeTintColor: '#777',
+	//inactiveTintColor: '#b2bec6',
+	activeTintColor: themeColor,
     inactiveTintColor: '#b2bec6',
     style: {
         backgroundColor: '#CDDFEA',

@@ -4,33 +4,70 @@
  * @Author: liyamei
  * @Date: 2019-11-04 14:40:27
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-15 16:18:42
+ * @LastEditTime: 2019-11-21 14:49:09
  */
 
 
 import React, { Component } from 'react';
-import { Text, FlatList, Image, View,TouchableHighlight} from 'react-native';
+import { Text, FlatList, Image, View,TouchableHighlight,RefreshControl} from 'react-native';
 import {styles} from './style';
-import {listStyles} from '../../assets/css/listStyle';
 import HeaderComponent from '../../components/HeaderComponent';
 import ArticleListComponent from '../../components/ArticleListComponent';
-import {headerHeight} from '../../assets/css/common';
-import ArticleList from '../../components/ArticleList';
+import {headerHeight,themeColor} from '../../assets/css/common';
+import DataEmpty from '../../components/DataEmpty';
+import ListFooterComponent from '../../components/ListFooterComponent';
+import Loading from '../../components/Loading';
 import {data} from '../HomePage/data';
 export default class MyCollectionPage extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-
+            isloading: true,//加载
+            isRefresh: false,// 下拉刷新
+            isLoadMore: true,// 加载更多
         }
     }
 
     componentDidMount() {
-        
+        const that = this;
+        that.timer = setTimeout(function () {
+            that.setState({
+                isloading: false
+            })
+        }, 500)
     }
     componentWillUnmount() {
+        this.timer && clearTimeout(this.timer);
+    }
+    /**
+     *下拉刷新
+     * 
+     * @memberof HomePage
+     */
+    _onRefresh() {
+        if (!this.state.isRefresh) {
+            console.log('下拉刷新')
+        }
+    }
+    /**
+     *上拉加载
+     *
+     * @memberof HomePage
+     */
+    _onLoadMore() {
+        const that=this;
+        that.timer=setTimeout(function(){
+            that.setState({
+                isLoadMore:false
+            })
+        },1000)
+        console.log('上拉加载')
     }
     render() {
+        const { isloading,isLoadMore,isRefresh } = this.state;
+        /*if(isloading){
+            return <Loading></Loading>
+        }*/
         return (
             <View style={[styles.container,{paddingTop:headerHeight}]}>
                 <HeaderComponent
@@ -43,7 +80,20 @@ export default class MyCollectionPage extends React.Component {
                     data={data}
                     keyExtractor={(item,index)=>index+''}
                     showsVerticalScrollIndicator={false}
-                    renderItem={(item,index)=><ArticleListComponent pageType='MyCollectionPage' item={item.item} index={index} navigation={this.props.navigation} key={index}></ArticleListComponent>}
+                    renderItem={(item,index)=><ArticleListComponent pageType='MyCollectionPage' item={item}  navigation={this.props.navigation} key={index}></ArticleListComponent>}
+                    ListEmptyComponent={<DataEmpty navigation={this.props.navigation} ></DataEmpty>}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={isRefresh}
+                            onRefresh={() => this._onRefresh()}
+                            colors={[themeColor]}
+                            size={RefreshControl.SIZE.LARGE}
+                        //progressBackgroundColor='red'//指示器的背景色
+                        />
+                    }
+                    ListFooterComponent={<ListFooterComponent navigation={this.props.navigation} isLoadMore={isLoadMore}></ListFooterComponent>}
+                    onEndReached={() => this._onLoadMore()}
+                    onEndReachedThreshold={0.1}
                 >
 
                 </FlatList>
@@ -51,39 +101,5 @@ export default class MyCollectionPage extends React.Component {
         );
     }
 }
-class CollectionItem extends React.Component{
-    render(){
-        const {item,index,navigation}=this.props;
-        return(
-            <View style={[listStyles.collectionItem,{paddingBottom:5}]}>
-                <Text style={listStyles.title} >{item.title}</Text>
-                <View style={{flexDirection: 'row',alignItems:"center"}}>
-                    <Text style={listStyles.label}>{item.label}</Text>
-                    <Text style={listStyles.dateTime}>2019年11月04日</Text>
-                </View>
-            </View>
-        )
-    }
-}
-/*class CollectionItem extends React.Component{
-    render(){
-        const {item,index,navigation}=this.props;
-        return(
-            <View style={listStyles.collectionItem}>
-                <Text style={listStyles.title} numberOfLines={1} >{item.title}</Text>
-                <View style={{flexDirection: 'row',}}>
-                    <Image source={item.img} style={listStyles.collectionItemLeft} resizeMode='cover'></Image>
-                    <View style={listStyles.collectionItemRight}>
-                        <Text style={listStyles.content} numberOfLines={3}>{item.content}</Text>
-                        <View style={listStyles.collectionItemBottom}>
-                            <Text style={listStyles.label}>{item.label}</Text>
-                            <TouchableHighlight style={listStyles.detailBtn} underlayColor='#fff' onPress={()=>navigation.push('ContentDetailPage')}>
-                                <Text>查看详情 》</Text>
-                            </TouchableHighlight>
-                        </View>
-                    </View>
-                </View>
-            </View>
-        )
-    }
-}*/
+
+

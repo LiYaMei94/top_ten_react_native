@@ -3,8 +3,8 @@
  * @version: 
  * @Author: liyamei
  * @Date: 2019-11-04 14:44:17
- * @LastEditors: liyamei
- * @LastEditTime: 2019-11-14 17:57:30
+ * @LastEditors  : liyamei
+ * @LastEditTime : 2020-01-06 16:36:59
  */
 
 import React, { Component } from 'react';
@@ -29,16 +29,15 @@ export const styles = StyleSheet.create({
         fontFamily: "iconfont",
         color:"#fff"
     },
+    //头部
     pageTop:{
         height:150,
-        //backgroundColor:'red',
         justifyContent:"center",
         alignItems:"center"
     },
     loginPageTop:{
         backgroundColor:themeColor,
         width:'100%',
-        //borderRadius:200,
         borderBottomRightRadius:110,
         borderBottomLeftRadius:110,
         marginBottom:30
@@ -93,17 +92,7 @@ export const styles = StyleSheet.create({
         flex:1,
         paddingLeft:15
     },
-    registerBtn:{
-        backgroundColor:themeColor,
-        justifyContent:"center",
-        alignItems:"center",
-        marginTop:25,
-        borderWidth:0,
-    },
-    registerText:{
-        color:'#fff',
-        fontSize:16
-    },
+    
     codeBtn:{
         width:100,
         height:50,
@@ -117,6 +106,16 @@ export const styles = StyleSheet.create({
         color:'#fff',
         fontSize:16
     },
+	//还没有账户，立即注册
+	registerBtn:{
+		backgroundColor:themeColor,
+		justifyContent:"center",
+		alignItems:"center"
+	},
+	registerText:{
+		color:'#fff',
+		fontSize:20
+	},
     pageBottom:{
         flexDirection:"row",
         justifyContent:"center",

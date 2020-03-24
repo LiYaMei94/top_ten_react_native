@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-04 14:38:23
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-15 16:13:02
+ * @LastEditTime: 2019-11-20 12:11:02
  */
 
 
@@ -16,6 +16,7 @@ import { addButtonStyle } from '../../assets/css/addButtonStyle';
 import { label } from './label';
 import { themeColor, headerHeight, headerPaddingTop, ScreenHeight, ScreenWidth } from '../../assets/css/common';
 import HeaderComponent from '../../components/HeaderComponent';
+import ThemeColorButton from '../../components/ThemeColorButton';
 export default class MyInterestPage extends React.Component {
     constructor(props) {
         super(props);
@@ -120,16 +121,19 @@ export default class MyInterestPage extends React.Component {
                             </TouchableHighlight>:null
                         }
                     </View>
-                    <TouchableHighlight
+                    <ThemeColorButton buttonIcon={`确定（${selectedArr.length}/${labelArr.length}）`} 
+                        optionButton={{position:'absolute',bottom:30}} 
+                        buttonPress={this.saveSelected.bind(this)}></ThemeColorButton>
+                    {/*<TouchableHighlight
                         style={[addButtonStyle.selectBtn, {}]}
                         underlayColor={themeColor}
                         onPress={() => this.saveSelected()}
                     >
                         <Text style={addButtonStyle.selectBtnText}>{isAdd ? "下一步" : "确定"}（{selectedArr.length}/{labelArr.length}）</Text>
-                    </TouchableHighlight>
+                    </TouchableHighlight>*/}
                 </View>
                 {/**新增标签弹窗 */}
-                <Modal visible={isShowAddLabelModal} transparent={true} onRequestClose={() => this.setState({ isShowAddLabelModal: false })}>
+                {/*<Modal visible={isShowAddLabelModal} transparent={true} onRequestClose={() => this.setState({ isShowAddLabelModal: false })}>
                     <View style={styles.AddLabelContainer}>
                         <KeyboardAvoidingView behavior='padding' style={{flex: 1,justifyContent:"center"}}>
                             <View style={styles.AddLabel}>
@@ -159,7 +163,7 @@ export default class MyInterestPage extends React.Component {
                             </View>
                         </KeyboardAvoidingView>
                     </View>
-                </Modal>
+                </Modal>*/}
             </View>
         );
     }

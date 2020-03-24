@@ -4,7 +4,7 @@
  * @Author: liyamei
  * @Date: 2019-11-04 18:25:45
  * @LastEditors: liyamei
- * @LastEditTime: 2019-11-19 18:25:44
+ * @LastEditTime: 2019-11-21 14:50:51
  */
 
 
@@ -19,6 +19,7 @@ import UserActionComponent from '../../components/UserActionComponent';
 import CommentItem from '../../components/CommentItem';
 import Loading from '../../components/Loading';
 import BackToTop from '../../components/BackToTop';
+import ListFooterComponent from '../../components/ListFooterComponent';
 const data = [{id:0},{id:1},{id:2}];
 class HeaderComponent extends React.Component {
     render() {
@@ -60,7 +61,9 @@ export default class ContentDetailPage extends React.Component {
             isShowCommentInput: false,
             commentInputText:'',
             isShowBackTop:false,
-            refreshing:false
+            isRefresh: false,// 下拉刷新
+            isLoadMore: true,// 加载更多
+            isloading:true,//加载
         }
     }
 
@@ -68,8 +71,8 @@ export default class ContentDetailPage extends React.Component {
 
     }
     componentWillUnmount() {
+        this.timer && clearTimeout(this.timer);
     }
-
 
     /**
      *更新webview的高度
@@ -117,16 +120,22 @@ export default class ContentDetailPage extends React.Component {
         this.ScrollView.scrollTo({ x: 0, y: y, animated: true })
     }
     /**
-     * 监听上拉触底
+     * 上拉加载
      * @param {*} e 
      */ 
-    _contentViewScroll (e){
+    _onLoadMore (e){
         let offsetY = e.nativeEvent.contentOffset.y; //滑动距离
         let contentSizeHeight = e.nativeEvent.contentSize.height; //scrollView contentSize高度
         let oriageScrollHeight = e.nativeEvent.layoutMeasurement.height; //scrollView高度
         if (offsetY + oriageScrollHeight >= contentSizeHeight){//上拉加载
             //获取新的数据
-
+            const that=this;
+            that.timer=setTimeout(function(){
+                that.setState({
+                    isLoadMore:false
+                })
+            },1000)
+            console.log('上拉加载')
         }
     };
     /**
@@ -145,23 +154,16 @@ export default class ContentDetailPage extends React.Component {
             WebViewHeight, 
             isLoad, 
             isShowBackTop, 
-            refreshing,
+            isLoadMore,
             isShowCommentInput } = this.state;
-        if (isLoad) {
-            //return <Loading></Loading>
-        }
+        /*if(isloading){
+            return <Loading></Loading>
+        }*/
         return (
             <View style={styles.container}>
                 <ScrollView 
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={refreshing}
-                            onRefresh={()=>this.onRefresh()}
-                        />
-                    }
-                    onMomentumScrollEnd = {(e)=>this._contentViewScroll(e)}
+                    onMomentumScrollEnd = {(e)=>this._onLoadMore(e)}
                     onScroll={(e)=>{
-                        //console.log(e.nativeEvent.contentOffset)
                         if(e.nativeEvent.contentOffset.y>WebViewHeight){
                             this.setState({
                                 isShowBackTop:true
@@ -174,19 +176,6 @@ export default class ContentDetailPage extends React.Component {
                     }} 
                     showsVerticalScrollIndicator={false} 
                     style={{ flex: 1 }} ref={(ref) => this.ScrollView = ref}>
-                    {/*<View style={styles.articleInfo}>
-                        <Text style={styles.articleTitle}>10大最稀有最罕见的奇葩动物</Text>
-                        <View style={{ flexDirection: "row", alignItems: "center", marginTop: 20 }}>
-                            <View style={{ flex: 1,flexDirection: "row", alignItems: "center", }}>
-                                <Text style={styles.articleInfoLine}>来源：网络、</Text>
-                                <Text>标签：动物、</Text>
-                                <Text>时间：2019年11月6日</Text>
-                            </View>
-                            <TouchableHighlight underlayColor={themeColor} onPress={() => this._collection()}>
-                                <Text style={styles.collection_button}>收藏</Text>
-                            </TouchableHighlight>
-                        </View>
-                    </View>*/}
                     <WebView
                         onMessage={(event) => {
                             //console.log(event)
@@ -207,7 +196,7 @@ export default class ContentDetailPage extends React.Component {
                     <View style={styles.commentListContainer}>
                         
                         {
-                            data.length ==0?
+                            data.length !=0?
                             data.map((item, index) => {
                                 return <CommentItem item={item} navigation={this.props.navigation} key={index}></CommentItem>
                             }):
@@ -218,6 +207,7 @@ export default class ContentDetailPage extends React.Component {
                                 </TouchableOpacity>
                             </View>
                         }
+                        <ListFooterComponent navigation={this.props.navigation} isLoadMore={isLoadMore}></ListFooterComponent>
                     </View>
                 </ScrollView>
                 {/**添加评论弹出 */}
